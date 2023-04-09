@@ -1,0 +1,12 @@
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\bin\Debug\net7.0\LogicaDeNegocio.deps.json
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\bin\Debug\net7.0\LogicaDeNegocio.dll
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\bin\Debug\net7.0\LogicaDeNegocio.pdb
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.csproj.AssemblyReference.cache
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.AssemblyInfoInputs.cache
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.AssemblyInfo.cs
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.csproj.CoreCompileInputs.cache
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.dll
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\refint\LogicaDeNegocio.dll
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\LogicaDeNegocio.pdb
+C:\Users\bruno\source\repos\Obligatorio_p1\LogicaDeNegocio\obj\Debug\net7.0\ref\LogicaDeNegocio.dll

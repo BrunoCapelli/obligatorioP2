@@ -1,0 +1,97 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "LogicaDeNegocio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/LogicaDeNegocio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LogicaDeNegocio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LogicaDeNegocio/1.0.0": {
+      "type": "project",
+      "path": "../LogicaDeNegocio/LogicaDeNegocio.csproj",
+      "msbuildProject": "../LogicaDeNegocio/LogicaDeNegocio.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "LogicaDeNegocio >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\bruno\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\Obligatorio_p1\\Obligatorio_p1.csproj",
+      "projectName": "Obligatorio_p1",
+      "projectPath": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\Obligatorio_p1\\Obligatorio_p1.csproj",
+      "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\Obligatorio_p1\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {
+              "projectPath": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
