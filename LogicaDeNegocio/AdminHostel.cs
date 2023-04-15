@@ -12,4 +12,10 @@ namespace LogicaDeNegocio
         private List<Actividad> _actividades = new List<Actividad>();
         private List<Proveedor> _proveedores = new List<Proveedor>();
     }
+
+
+
+    #region Metodos
+    // Validar que no exista un usuario con los datos ingresados
+    #endregion
 }
