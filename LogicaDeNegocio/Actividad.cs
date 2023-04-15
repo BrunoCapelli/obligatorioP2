@@ -15,7 +15,7 @@ namespace LogicaDeNegocio
         private int _cantidadMaxPersonas;
         private int _edadMinima;
         private List<Agenda> _agendas = new List<Agenda>();
-        private decimal _costo;
+        private decimal _costo = 0;
         private int _cuposDisponibles;
         private static int s_ultimoId;
     }
