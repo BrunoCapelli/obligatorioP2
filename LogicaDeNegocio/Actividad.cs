@@ -10,29 +10,18 @@ namespace LogicaDeNegocio
     {
         private int _id;
         private string _nombre;
-        private string descripcion;
+        private string _descripcion;
         private DateTime _fecha;
         private int _cantidadMaxPersonas;
         private int _edadMinima;
-        // private List<Agenda> _agendas = new List<Agenda>();
+        private List<Agenda> _agendas = new List<Agenda>();
         private decimal _costo;
         private int _cuposDisponibles;
         private static int s_ultimoId;
     }
 
-    public class ActividadPropia: Actividad 
-    {
-        private string _responsable;
-        private string _lugar;
-        private bool _isExterior;
-    }
 
-    public class ActividadTerciarizada: Actividad
-    {
-        private Proveedor _proveedor;
-        private bool _isConfirmada;
-        private DateTime _fechaConfirmación;
-    }
+    
 
 
 

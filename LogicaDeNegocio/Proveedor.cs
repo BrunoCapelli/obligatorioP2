@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    internal class Proveedor
+    public class Proveedor
     {
         private string _nombreProveedor;
-        private int _telefonoProveedor;
+        private string _telefonoProveedor;
         private string _direccionProveedor;
         private int _descuentoFijo;
 

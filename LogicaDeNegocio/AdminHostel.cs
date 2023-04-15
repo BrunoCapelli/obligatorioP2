@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    internal class AdminHostel
+    public class AdminHostel
     {
-        private List<Usuario> usuarios = new List<Usuario>();
-        private List<Actividad> actividades = new List<Actividad>();
-        private List<Proveedor> proveedores = new List<Proveedor>();
+        private List<Usuario> _usuarios = new List<Usuario>();
+        private List<Actividad> _actividades = new List<Actividad>();
+        private List<Proveedor> _proveedores = new List<Proveedor>();
     }
 }

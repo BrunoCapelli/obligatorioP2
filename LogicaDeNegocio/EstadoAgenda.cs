@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    internal enum EstadoAgenda
+    public enum EstadoAgenda
     {
         CONFIRMADA,
         PENDIENTE_PAGO

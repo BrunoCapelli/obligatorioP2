@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {}
+    "C:\\Users\\Nicolas\\source\\repos\\obligatorioP2\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {
+    "C:\\Users\\Nicolas\\source\\repos\\obligatorioP2\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\Nicolas\\source\\repos\\obligatorioP2\\LogicaDeNegocio\\LogicaDeNegocio.csproj",
         "projectName": "LogicaDeNegocio",
-        "projectPath": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\LogicaDeNegocio.csproj",
-        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruno\\source\\repos\\Obligatorio_p1\\LogicaDeNegocio\\obj\\",
+        "projectPath": "C:\\Users\\Nicolas\\source\\repos\\obligatorioP2\\LogicaDeNegocio\\LogicaDeNegocio.csproj",
+        "packagesPath": "C:\\Users\\Nicolas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nicolas\\Source\\Repos\\obligatorioP2\\LogicaDeNegocio\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Nicolas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
