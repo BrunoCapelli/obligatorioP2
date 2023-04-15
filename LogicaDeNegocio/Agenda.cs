@@ -14,5 +14,3 @@ namespace LogicaDeNegocio
         private decimal _costoFinal;
     }
 }
-
-//coso
