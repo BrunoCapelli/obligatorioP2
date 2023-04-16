@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogicaDeNegocio;
 
-namespace LogicaDeNegocio {
+
+namespace LogicaDeNegocio 
+{
     public class UsuarioHuesped : Usuario {
         private TipoDocumento _tipoDoc;
         private string _nroDocumento;
@@ -76,9 +79,21 @@ namespace LogicaDeNegocio {
 
         #region Metodos
 
-        public void Validate()
+        public void ValidateHuesped()
         {
-           
+            try
+            {
+                // Validar que el campo Habitacion no sea vacio
+                if(_habitacion.Length < 0)
+                {
+                    throw new Exception("El campo habitacion no puede estar vacío.");
+                }
+                // Validar que el Usuario no existe
+                /*if ()
+                {
+                    
+                }*/
+            }
         }
 
 
