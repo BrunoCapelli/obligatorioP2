@@ -14,7 +14,7 @@ namespace LogicaDeNegocio
 
         #region Metodos
         // Validar que no exista un usuario con los datos ingresados
-        public bool ExisteUsuario(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped)
+        public bool ExisteUsuarioHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped)
         {
             bool existe = false;
             foreach (UsuarioHuesped user in _usuarios)
@@ -26,6 +26,32 @@ namespace LogicaDeNegocio
                     }
                 }
             return existe;
+        }
+
+        public List<Actividad> ListaActividades()
+        {
+            return _actividades;
+        }
+        public List<Usuario> ListaUsuarios()
+        {
+            return _usuarios;
+        }
+        public List<Proveedor> ListaProveedor()
+        {
+            return _proveedores;
+        }
+        public void AltaHuesped(UsuarioHuesped newUser)
+        {
+            try
+            {
+                newUser.ValidateHuesped();
+                UsuarioHuesped altaUsuario = new UsuarioHuesped(newUser.Email, newUser.Password, newUser.Nombre, newUser.Apellido, newUser.TipoDoc, newUser.NroDocumento, newUser.FechaNacimiento, newUser.Habitacion, newUser.NivelFidelizacion);
+                _usuarios.Add(altaUsuario);
+
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
         #endregion
 

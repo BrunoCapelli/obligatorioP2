@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LogicaDeNegocio;
 
@@ -20,10 +21,10 @@ namespace LogicaDeNegocio
         private string _email;
         private string _password;
 
-    #region Propiedades
-        public TipoDocumento TipoDoc{
-            get { return _tipoDoc; } 
-            set {  _tipoDoc = value; }
+        #region Propiedades
+        public TipoDocumento TipoDoc {
+            get { return _tipoDoc; }
+            set { _tipoDoc = value; }
         }
 
         public string NroDocumento
@@ -34,7 +35,7 @@ namespace LogicaDeNegocio
 
         public string Nombre
         {
-            get { return _nombre;  }
+            get { return _nombre; }
             set { _nombre = value; }
         }
 
@@ -47,7 +48,7 @@ namespace LogicaDeNegocio
         public string Habitacion
         {
             get { return _habitacion; }
-            set {  _habitacion = value;}
+            set { _habitacion = value; }
         }
         public DateTime FechaNacimiento
         {
@@ -58,21 +59,21 @@ namespace LogicaDeNegocio
         public int NivelFidelizacion
         {
             get { return _nivel; }
-            set{_nivel = value;}   
+            set { _nivel = value; }
         }
         #endregion
 
         #region Constructor
-        public UsuarioHuesped(string Email, string Password,  string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion,int Nivel): base(Email, Password)
+        public UsuarioHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel) : base(Email, Password)
         {
             _email = Email;
             _password = Password;
             _nombre = Nombre;
-            _apellido= Apellido;            
+            _apellido = Apellido;
             _tipoDoc = tipoDoc;
             _nroDocumento = NroDocumento;
             _fechaNacimiento = FechaNacimiento;
-            _habitacion= Habitacion;
+            _habitacion = Habitacion;
             _nivel = Nivel;
         }
         #endregion
@@ -84,15 +85,18 @@ namespace LogicaDeNegocio
             try
             {
                 // Validar que el campo Habitacion no sea vacio
-                if(_habitacion.Length < 0)
+                if (_habitacion.Length < 0)
                 {
                     throw new Exception("El campo habitacion no puede estar vacío.");
                 }
-                // Validar que el Usuario no existe
-                /*if ()
+                
+                if (!Regex.IsMatch(_nroDocumento, "\\d\\.\\d\\d\\d\\.\\d\\d\\d-\\d"))
                 {
-                    
-                }*/
+                    throw new Exception("El documento ingresado no es valido");
+                }
+            }catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
