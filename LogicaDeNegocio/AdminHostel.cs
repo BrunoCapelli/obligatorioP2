@@ -17,6 +17,9 @@ namespace LogicaDeNegocio
         public bool ExisteUsuarioHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped)
         {
             bool existe = false;
+
+            // Hacerlo en UsuarioHuesped
+
             foreach (UsuarioHuesped user in _usuarios)
             {
                 // Verifico que no exista otro huesped con este numero y tipo de documento
@@ -32,9 +35,18 @@ namespace LogicaDeNegocio
         {
             return _actividades;
         }
+
         public List<Usuario> ListaUsuarios()
         {
             return _usuarios;
+        }
+        public void ListarUsuarios()
+        {
+            foreach (UsuarioHuesped user in _usuarios)
+            {
+                string datosUsuario;
+               // datosUsuario = user.Name.ToString;
+            }
         }
         public List<Proveedor> ListaProveedor()
         {

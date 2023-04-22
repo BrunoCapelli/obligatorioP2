@@ -14,6 +14,7 @@ namespace Obligatorio_p1
 
         public static void MostrarActividades(AdminHostel admHostel)
         {
+            // Recorrer la lista en adminHostel y devolver un string en Lista
             foreach (Actividad act in admHostel.ListaActividades())
             {
                 // PROVISIONAL. Falta formatear los datos
