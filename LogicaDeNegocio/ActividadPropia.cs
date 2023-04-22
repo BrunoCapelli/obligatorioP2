@@ -32,12 +32,52 @@ namespace LogicaDeNegocio {
 
         #region Metodos
             
-        public void Validate() :base() { //el base() aca es para que se llame al Validate de la clase padre primero
+        public void Validate() { //el base() aca es para que se llame al Validate de la clase padre primero
+            base.Validate();
             if (_responsable == "") {
                 throw new Exception("El nobre del responsable no puede ser vacio");
             }
         }
 
+        public override void AgregarAgenda(UsuarioHuesped huesped) {
+            //base.AgregarAgenda(huesped, estadoAgenda);
+            int nivel = huesped.NivelFidelizacion;
+            decimal costoFinal = obtenerCostoFinal(nivel);
+            EstadoAgenda estadoAgenda = new EstadoAgenda();
+            if (costoFinal == 0) {
+                estadoAgenda = EstadoAgenda.CONFIRMADA;
+            }
+            else {
+                estadoAgenda = EstadoAgenda.PENDIENTE_PAGO;
+
+            }
+
+
+            Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
+            this._agendas.Add(agenda);
+
+            return ("Datos formateados");
+        }
+
+        public decimal obtenerCostoFinal(int nivel) {
+            decimal costoFinal = 0;
+            switch (nivel) {
+                case 1:
+                    costoFinal = this.Costo ;
+                    break;
+                case 2:
+                    costoFinal = this.Costo * 0.9;
+                    break;
+                case 3:
+                    costoFinal = this.Costo * 0.85;
+                    break;
+                case 4:
+                    costoFinal = this.Costo * 0.8;
+                    break;
+                default: break;
+            }
+            return costoFinal;
+        }
         #endregion
     }
 }

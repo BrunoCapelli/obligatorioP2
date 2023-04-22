@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +19,9 @@ namespace LogicaDeNegocio
         private int _cantidadMaxPersonas;
         private int _edadMinima;
         private List<Agenda> _agendas = new List<Agenda>();
-        private decimal _costo = 0;
+        private decimal _costoFinal = 0;
         private int _cuposDisponibles;
-        private static int s_ultimoId;
+        private static int s_ultimoId = 0;
 
 
         #region Propiedades
@@ -35,7 +37,7 @@ namespace LogicaDeNegocio
 
         public int EdadMinina { get { return _edadMinima; } set { _edadMinima = value; } }
 
-        public decimal Costo { get { return _costo; } set { _costo = value; } }
+        public decimal Costo { get { return _costoFinal; } set { _costoFinal = value; } }
 
         public int CuposDisponibles { get { return _cuposDisponibles; } set { _cuposDisponibles = value; } }
 
@@ -51,7 +53,7 @@ namespace LogicaDeNegocio
             _fecha = fecha;
             _cantidadMaxPersonas = cantMaxPer;
             _edadMinima = edadMinima;
-            _costo = costo;
+            _costoFinal = costo;
             _cuposDisponibles = cupos;
         }
         #endregion
@@ -63,10 +65,10 @@ namespace LogicaDeNegocio
             if (this._nombre == "") {
                 throw new Exception("El nombre no puede ser vacio");
 
-            } else {
+            } else { //aca entra si el nombre esta bien
                 if (this._descripcion == "") {
                     throw new Exception("La descripcion no puede ser vacia");
-                } else {
+                } else { //aca entra si el nombre y la descripcion estan bien
                     if (this._nombre.Length > 25) {
                         throw new Exception("El nombre debe tener hasta 25 caracteres");
                     }
@@ -75,10 +77,12 @@ namespace LogicaDeNegocio
         }
 
 
-        public void AgregarAgenda(Agenda agenda) {
-            this._agendas.Add(agenda);
+        public virtual string AgregarAgenda(UsuarioHuesped huesped) { //el comportamiento es distinto en cada subclase
+            return "";
+           
         }
 
+        
         #endregion
 
 

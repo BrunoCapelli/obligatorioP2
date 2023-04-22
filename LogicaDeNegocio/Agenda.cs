@@ -21,10 +21,10 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,DateTime fechaCreacionAgenda,decimal costoFinal) {
+        Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,decimal costoFinal) {
             _huesped = huesped;
             _estadoAgenda= estadoAgenda;
-            _fechaCreacionAgenda= fechaCreacionAgenda;
+            _fechaCreacionAgenda= DateTime.Now;
             _costoFinal = costoFinal;
         }
         #endregion

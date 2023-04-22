@@ -31,10 +31,32 @@ namespace LogicaDeNegocio {
 
         #region Metodos
 
-        public void Validate() :base() { //como no tengo cosas para validar aca solo llamo en base al validate de la clase padre
-            
+        public void Validate() { //como no tengo cosas para validar aca solo llamo en base al validate de la clase padre
+            base.Validate();
         }
 
+        public override void AgregarAgenda(UsuarioHuesped huesped) {
+            if (_isConfirmada == true) {
+                int descuentoFijo = this.Proveedor.DescuentoFijo;
+                decimal costoFinal = this.Costo;
+                if (descuentoFijo != 0) {
+                    costoFinal = this.Costo - this.Costo * 1 / descuentoFijo;
+                }
+                EstadoAgenda estadoAgenda = new EstadoAgenda();
+                if (costoFinal == 0) {
+                    estadoAgenda = EstadoAgenda.CONFIRMADA;
+                }
+                else {
+                    estadoAgenda = EstadoAgenda.PENDIENTE_PAGO;
+
+                }
+                Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
+                return ("Datos formateados");
+            }
+            else {
+                throw new Exception("La actividad no esta confirmada");
+            }
+        }
         #endregion
     }
 }

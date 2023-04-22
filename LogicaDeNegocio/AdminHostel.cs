@@ -14,18 +14,26 @@ namespace LogicaDeNegocio
 
         #region Metodos
         // Validar que no exista un usuario con los datos ingresados
-        public bool ExisteUsuario(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) //mejor que un existe es usar un Buscar
+        public UsuarioHuesped BuscarHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) //mejor que un existe es usar un Buscar
         {
+            UsuarioHuesped huesped = null;
+            UsuarioHuesped huespedAux = null;
             bool existe = false;
-            foreach (UsuarioHuesped user in _usuarios) //aca es mejor usar un while
-            {
-                // Verifico que no exista otro huesped con este numero y tipo de documento
-                if (user.NroDocumento == nroDocumentoHuesped && user.TipoDoc == tipoDocumentoHuesped)
-                    {
+            int i = 0;
+
+            while (i < _usuarios.Count && existe == false) {
+                huespedAux = _usuarios[i] as UsuarioHuesped;
+                if (huespedAux != null) {
+                    if (huespedAux.NroDocumento == nroDocumentoHuesped && huespedAux.TipoDoc = tipoDocumentoHuesped) {
+                        huesped = huespedAux;
                         existe = true;
                     }
                 }
-            return existe;
+                i++;
+            }
+
+            
+            return huesped;
         }
         #endregion
 
@@ -34,11 +42,12 @@ namespace LogicaDeNegocio
             bool existe = false;
             int i = 0;
 
-            while (int i < _proveedores.Count && existe ==false) { //lo hago con un while para que no recorra innecesariamente
+            while ( i < _proveedores.Count && existe ==false) { //lo hago con un while para que no recorra innecesariamente
                 if (_proveedores[i].NombreProveedor == nombre) {
                     existe = true;
                     prov = _proveedores[i];
                 }
+                i++;
             }
             
             return prov;
@@ -72,6 +81,7 @@ namespace LogicaDeNegocio
                     existe = true;
                     act = _actividades[i];
                 }
+                i++;
             }
 
             return act;
