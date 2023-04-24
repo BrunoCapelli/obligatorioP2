@@ -18,7 +18,7 @@ namespace LogicaDeNegocio
         private DateTime _fecha;
         private int _cantidadMaxPersonas;
         private int _edadMinima;
-        private List<Agenda> _agendas = new List<Agenda>();
+        protected List<Agenda> _agendas = new List<Agenda>();
         private decimal _costoFinal = 0;
         private int _cuposDisponibles;
         private static int s_ultimoId = 0;
@@ -31,7 +31,7 @@ namespace LogicaDeNegocio
 
         public string Descripcion { get { return _descripcion; } set { _descripcion = value; } }
 
-        public DateTime Fecha { get { return _fecha; } set { fecha = value; } }
+        public DateTime Fecha { get { return _fecha; } set { _fecha = value; } }
 
         public int CantidadMaxPersonas { get { return _cantidadMaxPersonas; } set { _cantidadMaxPersonas = value; } }
 
@@ -46,8 +46,8 @@ namespace LogicaDeNegocio
 
         #region Constructor
         public Actividad(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo, int cupos) { //no intentar llamar a este metodo para un objeto Actividad, dara error por ser abstracto
-            s_ultimoId += 1
-            _id = s_ultimoId
+            s_ultimoId += 1;
+            _id = s_ultimoId;
             _nombre = nombre;
             _descripcion = descripcion;
             _fecha = fecha;

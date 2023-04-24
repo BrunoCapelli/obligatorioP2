@@ -21,7 +21,7 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,decimal costoFinal) {
+        public Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,decimal costoFinal) { //se puede hacer esto?
             _huesped = huesped;
             _estadoAgenda= estadoAgenda;
             _fechaCreacionAgenda= DateTime.Now;

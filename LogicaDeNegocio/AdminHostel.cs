@@ -24,7 +24,7 @@ namespace LogicaDeNegocio
             while (i < _usuarios.Count && existe == false) {
                 huespedAux = _usuarios[i] as UsuarioHuesped;
                 if (huespedAux != null) {
-                    if (huespedAux.NroDocumento == nroDocumentoHuesped && huespedAux.TipoDoc = tipoDocumentoHuesped) {
+                    if (huespedAux.NroDocumento == nroDocumentoHuesped && huespedAux.TipoDoc == tipoDocumentoHuesped) {
                         huesped = huespedAux;
                         existe = true;
                     }
@@ -62,7 +62,7 @@ namespace LogicaDeNegocio
                 if (BuscarProveedor(nombre) == null) { //busco el proveedor, si da null es que no existe y puedo agregarlo
                     _proveedores.Add(prov);
                 } else {  //si no da null arrojo excepcion
-                    throw new Exception("Ya existe un proveedor con este nombre")
+                    throw new Exception("Ya existe un proveedor con este nombre");
                 }
             }
             catch {
@@ -76,7 +76,7 @@ namespace LogicaDeNegocio
             bool existe = false;
             int i = 0;
 
-            while (int i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+            while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
                 if (_actividades[i].Nombre == nombre && _actividades[i].Fecha == fecha) {
                     existe = true;
                     act = _actividades[i];
@@ -98,7 +98,7 @@ namespace LogicaDeNegocio
                 if (act != null) {
                     _actividades.Add(actividadPropia);
                 } else {
-                    throw new Exception("Ya existe una Actividad con este nombre") //puedo hacer el add porque es clase hija
+                    throw new Exception("Ya existe una Actividad con este nombre"); //puedo hacer el add porque es clase hija
                 }
             } catch {
                 throw; //aca paso a Program la excepcion que dio validate de actividadPropia
@@ -114,7 +114,7 @@ namespace LogicaDeNegocio
             Proveedor prov = BuscarProveedor(nombreProveedor);
             if (prov != null) { //si no hay proveedor no puedo crear la actividad terciarizada por la agregacion que esta en UML
                 //aca le paso el prov que encontre
-                ActividadTerciarizada actividadTerciarizada = new ActividadTerciarizada(nombre,descripcion,fecha,cantMaxPer,edadMinima,costo,cupos,prov,confirmada,fechaConfirmacion)
+                ActividadTerciarizada actividadTerciarizada = new ActividadTerciarizada(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, cupos, prov, confirmada, fechaConfirmacion);
                 try {
                         actividadTerciarizada.Validate();
                         Actividad act = BuscarActividad(nombre, fecha); //lo hago con actvidad porque reviso si existe una actividad (no importa el tipo) con los mismos datos "clave"
@@ -123,14 +123,14 @@ namespace LogicaDeNegocio
                             _actividades.Add(actividadTerciarizada); //puedo hacer el add porque es clase hija
                         }
                         else {
-                            throw new Exception("Ya existe una Actividad con este nombre")
+                        throw new Exception("Ya existe una Actividad con este nombre");
                         }
                  }
                 catch {
                     throw; //aca paso a Program la excepcion que dio validate de actividadPropia
                 }
-            } else { 
-                throw new Exception("No existe un proveedor con ese nombre")
+            } else {
+                throw new Exception("No existe un proveedor con ese nombre");
             }
         }
 

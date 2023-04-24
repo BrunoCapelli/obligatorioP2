@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LogicaDeNegocio {
 
     public class ActividadPropia : Actividad { //falta agregar interfaz
@@ -39,7 +40,7 @@ namespace LogicaDeNegocio {
             }
         }
 
-        public override void AgregarAgenda(UsuarioHuesped huesped) {
+        public override string AgregarAgenda(UsuarioHuesped huesped) {
             //base.AgregarAgenda(huesped, estadoAgenda);
             int nivel = huesped.NivelFidelizacion;
             decimal costoFinal = obtenerCostoFinal(nivel);
@@ -66,13 +67,13 @@ namespace LogicaDeNegocio {
                     costoFinal = this.Costo ;
                     break;
                 case 2:
-                    costoFinal = this.Costo * 0.9;
+                    costoFinal = this.Costo * (decimal)0.9;
                     break;
                 case 3:
-                    costoFinal = this.Costo * 0.85;
+                    costoFinal = this.Costo * (decimal)0.85;
                     break;
                 case 4:
-                    costoFinal = this.Costo * 0.8;
+                    costoFinal = this.Costo * (decimal)0.8;
                     break;
                 default: break;
             }

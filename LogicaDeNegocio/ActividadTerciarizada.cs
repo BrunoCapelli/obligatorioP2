@@ -11,7 +11,7 @@ namespace LogicaDeNegocio {
         private DateTime _fechaConfirmacion;
 
         #region Propiedades
-        public Proveedor Proveedor { get { return _proveedor;} ,set { _proveedor = value; } }
+        public Proveedor Proveedor { get { return _proveedor;} set { _proveedor = value; } }
 
         public bool IsConfirmada { get { return _isConfirmada; } set {  _isConfirmada = value; } }
 
@@ -35,7 +35,7 @@ namespace LogicaDeNegocio {
             base.Validate();
         }
 
-        public override void AgregarAgenda(UsuarioHuesped huesped) {
+        public override string AgregarAgenda(UsuarioHuesped huesped) {
             if (_isConfirmada == true) {
                 int descuentoFijo = this.Proveedor.DescuentoFijo;
                 decimal costoFinal = this.Costo;
@@ -51,6 +51,7 @@ namespace LogicaDeNegocio {
 
                 }
                 Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
+                this._agendas.Add(agenda);
                 return ("Datos formateados");
             }
             else {
