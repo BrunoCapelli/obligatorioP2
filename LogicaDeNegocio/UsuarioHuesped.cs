@@ -84,6 +84,7 @@ namespace LogicaDeNegocio
         {
             try
             {
+                base.Validate(); // llamo al validar de la clase padre primero
                 // Validar que el campo Habitacion no sea vacio
                 if (_habitacion.Length < 0)
                 {
@@ -97,6 +98,9 @@ namespace LogicaDeNegocio
             }catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            catch {
+                throw;
             }
         }
 
