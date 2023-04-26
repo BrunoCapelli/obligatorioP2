@@ -41,6 +41,7 @@ namespace LogicaDeNegocio {
         }
 
         public override string AgregarAgenda(UsuarioHuesped huesped) {
+            string resultado = "";
             //base.AgregarAgenda(huesped, estadoAgenda);
             int nivel = huesped.NivelFidelizacion;
             decimal costoFinal = obtenerCostoFinal(nivel);
@@ -57,7 +58,18 @@ namespace LogicaDeNegocio {
             Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
             this._agendas.Add(agenda);
 
-            return ("Datos formateados");
+            resultado = "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
+                   + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
+                   + this.Fecha.ToString() + "\nLugar: " + this.Lugar;
+            if (costoFinal == 0) {
+                resultado += "\nCosto: Actividad gratuita";
+            }
+            else {
+                resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+            }
+            resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();
+
+            return resultado;
         }
 
         public decimal obtenerCostoFinal(int nivel) {
