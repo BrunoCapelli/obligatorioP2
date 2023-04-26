@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public abstract class Actividad  //falta agregar interfaz
+    public abstract class Actividad: IValidate
     {
         private int _id;
         private string _nombre;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Usuario
+    public class Usuario: IValidate
     {
         private string _email;
         private string _password;
@@ -47,9 +47,9 @@ namespace LogicaDeNegocio
                 {
                     throw new Exception("La contraseña debe ser mayor a 8 caracteres.");
                 }
-            }catch (Exception ex)
+            }catch
             {
-                throw new Exception(ex.Message);
+                throw;
             }
         }
         #endregion

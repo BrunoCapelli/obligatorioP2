@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LogicaDeNegocio {
-    public class ActividadTerciarizada : Actividad { //falta agregar interfaz
+    public class ActividadTerciarizada : Actividad, IValidate
+    { 
         private Proveedor _proveedor;
         private bool _isConfirmada;
         private DateTime _fechaConfirmacion;

@@ -9,7 +9,7 @@ using LogicaDeNegocio;
 
 namespace LogicaDeNegocio 
 {
-    public class UsuarioHuesped : Usuario {
+    public class UsuarioHuesped : Usuario, IValidate {
         private TipoDocumento _tipoDoc;
         private string _nroDocumento;
         private string _nombre;
@@ -80,7 +80,7 @@ namespace LogicaDeNegocio
 
         #region Metodos
 
-        public void ValidateHuesped()
+        public void Validate()
         {
             try
             {
@@ -93,7 +93,7 @@ namespace LogicaDeNegocio
                 
                 if (!Regex.IsMatch(_nroDocumento, "\\d\\.\\d\\d\\d\\.\\d\\d\\d-\\d"))
                 {
-                    throw new Exception("El documento ingresado no es valido");
+                    throw new Exception("El documento ingresado no es valido.");
                 }
             }catch (Exception ex)
             {

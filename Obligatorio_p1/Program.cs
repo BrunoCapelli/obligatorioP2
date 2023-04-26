@@ -14,21 +14,12 @@ namespace Obligatorio_p1
 
         public static void MostrarActividades(AdminHostel admHostel)
         {
-            // Recorrer la lista en adminHostel y devolver un string en Lista
-            foreach (Actividad act in admHostel.ListaActividades())
-            {
-                // PROVISIONAL. Falta formatear los datos
-                Console.WriteLine(act.ToString());
-            }
+            admHostel.ListarActividades();
         }
 
         public static void MostrarProveedores(AdminHostel admHostel)
         {
-            foreach (Proveedor prov in admHostel.ListaProveedor())
-            {
-                // PROVISIONAL. Falta formatear los datos
-                Console.WriteLine(prov.ToString());
-            }
+            admHostel.ListarProveedores();
         }
 
         public static void AltaHuesped(AdminHostel admHostel)
@@ -67,5 +58,9 @@ namespace Obligatorio_p1
 
             admHostel.AltaHuesped(usuarioAlta);
         }
+
+        
+
+
     }
 }

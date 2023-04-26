@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Proveedor //falta agregar interfaz
+    public class Proveedor: IComparable<Proveedor>, IValidate 
     {
         private string _nombreProveedor;
         private string _telefonoProveedor;
@@ -34,13 +34,19 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Metodos
-        public void Validate() {
+        public void Validate() 
+        {
             if (this._telefonoProveedor == "") {
                 throw new Exception("El telefono no puede ser vacio");
             } else if (this._direccionProveedor == "") {
                 throw new Exception("La direccion no puede ser vacia");
             }
 
+        }
+
+        public int CompareTo(Proveedor prov)
+        {
+            return _nombreProveedor.CompareTo(prov.NombreProveedor);
         }
         #endregion
 

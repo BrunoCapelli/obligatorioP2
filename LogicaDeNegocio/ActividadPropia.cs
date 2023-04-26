@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio {
 
-    public class ActividadPropia : Actividad { //falta agregar interfaz
+    public class ActividadPropia : Actividad, IValidate { 
         private string _responsable;
         private string _lugar;
         private bool _isExterior;

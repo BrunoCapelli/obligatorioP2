@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Agenda
+    public class Agenda//: IValidate
     {
         private UsuarioHuesped _huesped;
         private EstadoAgenda _estadoAgenda;
