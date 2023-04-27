@@ -146,7 +146,8 @@ namespace LogicaDeNegocio
         public string ListarActividades() 
         {
             string resultado = null;
-            foreach(Actividad act in _actividades)
+            resultado = "Actividades: \n";
+            foreach(ActividadTerciarizada act in _actividades.OfType<ActividadTerciarizada>())
             {
                 resultado += $" Actividad \n ID: {act.Id}" +
                     $" \n Descripcion: {act.Descripcion} " +
@@ -154,6 +155,16 @@ namespace LogicaDeNegocio
                     $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
                     $"\n Edad min para realizarla: {act.EdadMinina}";
             }
+
+            foreach (ActividadPropia act in _actividades.OfType<ActividadPropia>())
+            {
+                resultado += $" Actividad \n ID: {act.Id}" +
+                    $" \n Descripcion: {act.Descripcion} " +
+                    $"\n Fecha: {act.Fecha} " +
+                    $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
+                    $"\n Edad min para realizarla: {act.EdadMinina}";
+            }
+
             return resultado;
         }
 
@@ -207,6 +218,30 @@ namespace LogicaDeNegocio
             {
                 throw new Exception("No se encontro el proveedor");
             }
+        }
+
+        public string ListarActividadesFiltradas(decimal costo, DateTime fechaDesde, DateTime fechaHasta)
+        {
+
+            this._actividades.Sort(); // Ordena por costo
+            string resultado = "Actividades \n";
+            foreach (Actividad act in _actividades)
+            {
+                if(act.Fecha >= fechaDesde && act.Fecha <= fechaHasta && act.Costo >= costo)
+                {
+                    resultado += $" Actividad \n ID: {act.Id}" +
+                        $" \n Descripcion: {act.Descripcion} " +
+                        $"\n Fecha: {act.Fecha} " +
+                        $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
+                        $"\n Edad min para realizarla: {act.EdadMinina}";
+                }
+            }
+
+           
+
+
+
+            return resultado;
         }
 
     }

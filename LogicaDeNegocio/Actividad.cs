@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public abstract class Actividad: IValidate
+    public abstract class Actividad: IValidate, IComparable<Actividad>
     {
         private int _id;
         private string _nombre;
@@ -82,7 +82,11 @@ namespace LogicaDeNegocio
            
         }
 
-        
+        public int CompareTo(Actividad act)
+        {
+            return _costoFinal.CompareTo(act._costoFinal);
+        }
+
         #endregion
 
 

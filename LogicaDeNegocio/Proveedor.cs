@@ -48,6 +48,8 @@ namespace LogicaDeNegocio
         {
             return _nombreProveedor.CompareTo(prov.NombreProveedor);
         }
+
+        
         #endregion
 
     }

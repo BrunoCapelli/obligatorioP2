@@ -4,25 +4,26 @@ namespace Obligatorio_p1
 {
     internal class Program
     {
+        private static AdminHostel adminHostel = new AdminHostel();
         static void Main(string[] args)
         {
-            AdminHostel adminHostel = new AdminHostel();
+            
 
             
 
         }
 
-        public static void MostrarActividades(AdminHostel admHostel)
+        public static void MostrarActividades()
         {
-            admHostel.ListarActividades();
+            Console.WriteLine(adminHostel.ListarActividades());
         }
 
-        public static void MostrarProveedores(AdminHostel admHostel)
+        public static void MostrarProveedores()
         {
-            admHostel.ListarProveedores();
+            Console.WriteLine( adminHostel.ListarProveedores());
         }
 
-        public static void AltaHuesped(AdminHostel admHostel)
+        public static void AltaHuesped()
         {
             Console.WriteLine("ALTA DE USUARIO");
             Console.WriteLine("Ingrese un nombre: ");
@@ -56,9 +57,38 @@ namespace Obligatorio_p1
 
             UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
 
-            admHostel.AltaHuesped(usuarioAlta);
+            try
+            {
+
+                adminHostel.AltaHuesped(usuarioAlta);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
+        public void EstablecerDescuentoAUnProveedor(string nombreProveedor, int descuento)
+        {
+            try
+            {
+
+                adminHostel.EstablecerDescuento(nombreProveedor, descuento);
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public void MostrarMenu()
+        {
+            Console.WriteLine(" Bienvenido a su hostel \n" +
+                "");
+        }
+
+        public void ListarActividadesFiltradas(decimal costo, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            Console.WriteLine(adminHostel.ListarActividadesFiltradas(costo, fechaDesde, fechaHasta));
+        }
         
 
 
