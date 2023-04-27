@@ -147,17 +147,7 @@ namespace LogicaDeNegocio
         {
             string resultado = null;
             resultado = "Actividades: \n";
-            foreach(ActividadTerciarizada act in _actividades.OfType<ActividadTerciarizada>())
-            {
-                resultado += $" Actividad \n ID: {act.Id}" +
-                    $" \n Descripcion: {act.Descripcion} " +
-                    $"\n Fecha: {act.Fecha} " +
-                    $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
-                    $"\n Edad min para realizarla: {act.EdadMinina}";
-            }
-
-            foreach (ActividadPropia act in _actividades.OfType<ActividadPropia>())
-            {
+            foreach (Actividad act in _actividades) {
                 resultado += $" Actividad \n ID: {act.Id}" +
                     $" \n Descripcion: {act.Descripcion} " +
                     $"\n Fecha: {act.Fecha} " +
