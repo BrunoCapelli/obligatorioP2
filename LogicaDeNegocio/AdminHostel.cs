@@ -211,7 +211,7 @@ namespace LogicaDeNegocio
             Proveedor prov = BuscarProveedor(nombreProveedor);
             if (prov != null) 
             {
-                //hacer cositas
+                
                 prov.DescuentoFijo = descuento;
             }
             else
@@ -222,26 +222,40 @@ namespace LogicaDeNegocio
 
         public string ListarActividadesFiltradas(decimal costo, DateTime fechaDesde, DateTime fechaHasta)
         {
-
-            this._actividades.Sort(); // Ordena por costo
-            string resultado = "Actividades \n";
-            foreach (Actividad act in _actividades)
+            try
             {
-                if(act.Fecha >= fechaDesde && act.Fecha <= fechaHasta && act.Costo >= costo)
+                if(costo >=0 && fechaDesde> DateTime.MinValue &&  fechaHasta> DateTime.MinValue) // Valido el costo y las fechas ingresadas
                 {
-                    resultado += $" Actividad \n ID: {act.Id}" +
-                        $" \n Descripcion: {act.Descripcion} " +
-                        $"\n Fecha: {act.Fecha} " +
-                        $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
-                        $"\n Edad min para realizarla: {act.EdadMinina}";
+                    this._actividades.Sort(); // Ordena por costo
+                    string resultado = "Actividades \n";
+                    foreach (Actividad act in _actividades)
+                    {
+                        if(act.Fecha >= fechaDesde && act.Fecha <= fechaHasta && act.Costo >= costo)
+                        {
+                            resultado += $" Actividad \n ID: {act.Id}" +
+                                $" \n Descripcion: {act.Descripcion} " +
+                                $"\n Fecha: {act.Fecha} " +
+                                $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
+                                $"\n Edad min para realizarla: {act.EdadMinina}";
+                        }
+                    }
+
+                    return resultado;
                 }
+                else
+                {
+                    throw new Exception("Los datos ingesados no son validos");
+                }
+            }catch
+            {
+                throw;
             }
+
 
            
 
 
 
-            return resultado;
         }
 
     }

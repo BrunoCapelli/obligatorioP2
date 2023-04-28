@@ -7,9 +7,11 @@ namespace Obligatorio_p1
         private static AdminHostel adminHostel = new AdminHostel();
         static void Main(string[] args)
         {
-            
+            MostrarMenu();
 
-            
+
+
+
 
         }
 
@@ -25,72 +27,140 @@ namespace Obligatorio_p1
 
         public static void AltaHuesped()
         {
-            Console.WriteLine("ALTA DE USUARIO");
-            Console.WriteLine("Ingrese un nombre: ");
-            string nombre = Console.ReadLine();
-            
-            Console.WriteLine("Ingrese un apellido: ");
-            string apellido = Console.ReadLine();
-            
-            Console.WriteLine("Ingrese un email: ");
-            string email = Console.ReadLine();
-
-            Console.WriteLine("Ingrese un password: ");
-            string password = Console.ReadLine();
-
-            Console.WriteLine("Ingrese nro de documento: ");
-            string nroDocumento = Console.ReadLine();
-
-            Console.WriteLine("Ingrese un tipo de Documento (CI, DNI, OTRO): ");
-            string documento = Console.ReadLine();
-            TipoDocumento tipoDoc = (TipoDocumento)Enum.Parse(typeof(TipoDocumento), documento);
-
-            Console.WriteLine("Ingrese fecha de nacimiento: ");
-            string fechaNacimiento = Console.ReadLine();
-            DateTime fechaNac = (DateTime)Enum.Parse(typeof(DateTime), fechaNacimiento);
-
-            Console.WriteLine("Ingrse habitacion: ");
-            string habitacion = Console.ReadLine();
-
-            Console.WriteLine("Ingrese nivel de fidelizaion: ");
-            Int32.TryParse(Console.ReadLine(), out int nivelFidelizacion);
-
-            UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
-
             try
             {
 
-                adminHostel.AltaHuesped(usuarioAlta);
+                Console.WriteLine("--- ALTA DE USUARIO ---\n");
+
+                Console.WriteLine("Ingrese un nombre: \n");
+                string nombre = Console.ReadLine();
+            
+                Console.WriteLine("Ingrese un apellido: \n");
+                string apellido = Console.ReadLine();
+            
+                Console.WriteLine("Ingrese un email: \n");
+                string email = Console.ReadLine();
+
+                Console.WriteLine("Ingrese un password: \n");
+                string password = Console.ReadLine();
+
+                Console.WriteLine("Ingrese nro de documento: \n");
+                string nroDocumento = Console.ReadLine();
+
+                Console.WriteLine("Ingrese un tipo de Documento (CI, DNI, OTRO): \n");
+                string documento = Console.ReadLine();
+                TipoDocumento tipoDoc = (TipoDocumento)Enum.Parse(typeof(TipoDocumento), documento);
+                
+                Console.WriteLine("Ingrese fecha de nacimiento: ");
+                string fechaNacimiento = Console.ReadLine();
+                DateTime.TryParse(fechaNacimiento, out DateTime fechaNac);
+            
+                Console.WriteLine("Ingrse habitacion: ");
+                string habitacion = Console.ReadLine();
+
+                Console.WriteLine("Ingrese nivel de fidelizaion: ");
+                Int32.TryParse(Console.ReadLine(), out int nivelFidelizacion);
+
+                UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+
+                try
+                {
+
+                    adminHostel.AltaHuesped(usuarioAlta);
+                }catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
         }
 
-        public void EstablecerDescuentoAUnProveedor(string nombreProveedor, int descuento)
+        public static void EstablecerDescuentoAUnProveedor()
         {
             try
             {
+                Console.WriteLine("Ingrese el nombre del proveedor: ");
+                string nombreProveedor = Console.ReadLine();
+
+                Console.WriteLine("Ingrese el valor del descuento: ");
+                Int32.TryParse(Console.ReadLine(), out int descuento);
 
                 adminHostel.EstablecerDescuento(nombreProveedor, descuento);
-            }catch (Exception ex)
+            }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex);
             }
         }
 
-        public void MostrarMenu()
-        {
-            Console.WriteLine(" Bienvenido a su hostel \n" +
-                "");
-        }
 
-        public void ListarActividadesFiltradas(decimal costo, DateTime fechaDesde, DateTime fechaHasta)
+        public static void ListarActivFiltradas()
         {
-            Console.WriteLine(adminHostel.ListarActividadesFiltradas(costo, fechaDesde, fechaHasta));
+            Console.WriteLine("Ingrese un costo en dolares: ");
+            Decimal.TryParse(Console.ReadLine(), out decimal costo);
+
+            try
+            {
+                Console.WriteLine("Ingrese fecha inicial: ");
+                string fechaInicialInput = Console.ReadLine();
+
+                DateTime fechaFiltradaDesde = new DateTime();
+                DateTime.TryParse(fechaInicialInput, out fechaFiltradaDesde);
+
+
+                Console.WriteLine("Ingrese fecha final: ");
+
+                string fechaHastaInput = Console.ReadLine();
+
+                DateTime fechaFiltradaHasta = new DateTime();
+                DateTime.TryParse(fechaHastaInput, out fechaFiltradaHasta);
+
+                Console.WriteLine(adminHostel.ListarActividadesFiltradas(costo, fechaFiltradaDesde, fechaFiltradaHasta));
+            }
+            catch
+            {
+                throw new Exception("Los datos de la fecha ingresada no son validos");
+            }
+
+        }
+        public static void MostrarMenu()
+        {
+            Console.WriteLine(" --- Bienvenido a su hostel --- \n" +
+                "Elija una de las opciones:\n " +
+                "1 - Mostrar listado de actividades\n" +
+                "2 - Mostar listado de proveedores\n" +
+                "3 - Mostrar actividades por fecha y costo\n" +
+                "4 - Establecer el valor de promoción para actividades de un proveedor\n" +
+                "5 - Realizar alta de un huesped");
+
         }
         
+        public static void SeleccionarOpcion()
+        {
+            Int32.TryParse(Console.ReadLine(), out int opcion);
 
+            switch(opcion)
+            {
+                case 1:
+                    MostrarActividades();
+                    break;
+                case 2:
+                    MostrarProveedores();
+                    break;
+                case 3:
+                    ListarActivFiltradas();
+                    break;
+                case 4:
+                    EstablecerDescuentoAUnProveedor();
+                    break;
+                case 5:
+                    AltaHuesped();
+                    break;
+
+
+            }
+        }
 
     }
 }
