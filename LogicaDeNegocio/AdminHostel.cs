@@ -127,6 +127,7 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fechaConfirmacionIn, out fechaConfirmacion);
 
             Proveedor prov = BuscarProveedor(nombreProveedor);
+
             if (prov != null) { //si no hay proveedor no puedo crear la actividad terciarizada por la agregacion que esta en UML
                 //aca le paso el prov que encontre
                 ActividadTerciarizada actividadTerciarizada = new ActividadTerciarizada(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, cupos, prov, confirmada, fechaConfirmacion);
@@ -288,6 +289,7 @@ namespace LogicaDeNegocio
             AltaProveedor("Norberto Molina", "22001189", "Paraguay 2100", 9);
 
             // Precarga de Actividades Propias
+            
             AltaActividadPropia("Yoga", "Masajes, belleza, relax", "01/11/2023", 25, 18, 10, 25, "Juan Orozco", "Spa", false);
             AltaActividadPropia("Baila con Ritmo", "Clase de baile de salsa y bachata", "05/07/2023", 20, 16, 15, 15, "Pedro Rodríguez", "Salon principal", false);
             AltaActividadPropia("Sabores del Caribe", "Comida caribeña ", "15/08/2023", 25, 18, 50, 20, "Laura Fernández", "Segunda planta", false);
@@ -298,9 +300,20 @@ namespace LogicaDeNegocio
             AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 25, 40, "María García", "Patio de eventos", true);
             AltaActividadPropia("Gimnasia Acuática", "Gimnasia acuática en la piscina", "20/05/2023", 15, 16, 5, 12, "José Martínez", "Piscina del hotel", true);
             AltaActividadPropia("Tour Histórico", "Tour guiado por los lugares históricos más importantes de la ciudad", "05/03/2023", 20, 16, 25, 15, "Alejandro Gómez", "Recepción del hotel", false);
+            
 
             // Precarga de Actividades Terciarizadas
-            AltaActividadTerciarizada("Paseo en caballo", "Paseo en caballo por el jardin del hotel", "15/02/2023", 25, 16, 12, 65, "Alonso & Umpierrez", true, "")
+            AltaActividadTerciarizada("Paseo en caballo", "Paseo en caballo por el jardin del hotel", "15/02/2023", 25, 16, 12, 65, "Rekreation S.A.", true, "01/11/2023");
+            AltaActividadTerciarizada("Senderismo", "Excursión de senderismo por las montañas", "05/03/2023", 15, 18, 25, 120, "DreamWorks S.R.L.", false, "30/06/2023");
+            AltaActividadTerciarizada("Parapente", "Experiencia de vuelo en parapente con guía profesional", "15/04/2023", 10, 21, 80, 80, "Estela Umpierrez S.A.", false, "30/11/2023");
+            AltaActividadTerciarizada("Buceo", "Inmersión de buceo en los arrecifes", "20/05/2023", 8, 18, 100, 30, "Rekreation S.A.", false, "30/09/2023");
+            AltaActividadTerciarizada("Paintball", "Juego de paintball en campo de batalla", "10/06/2023", 20, 16, 20, 60, "TravelFun", false, "30/12/2023");
+            AltaActividadTerciarizada("Buggy", "Experiencia de manejo de buggy todo terreno", "15/07/2023", 10, 21, 60, 80, "DreamWorks S.R.L.", false, "31/10/2023");
+            AltaActividadTerciarizada("Kitesurf", "Clase de kitesurf con equipo incluido", "20/08/2023", 6, 18, 150, 10, "TravelFun", false, "31/12/2023");
+            AltaActividadTerciarizada("Escalada en Roca", "Excursión de escalada en roca con guía profesional", "15/09/2023", 12, 16, 40, 50, "TravelFun", false, "31/03/2023");
+            AltaActividadTerciarizada("Rafting", "Excursión de rafting por el río cercano al hotel", "20/10/2023", 8, 18, 70, 40, "Lúdica S.A.", false, "30/04/2023");
+            AltaActividadTerciarizada("Observación de Estrellas", "Noche de observación de estrellas con telescopios", "15/11/2023", 20, 12, 5, 30, "Norberto Molina", false, "28/02/2023");
+            AltaActividadTerciarizada("Globo Aerostático", "Experiencia de vuelo en globo aerostático", "20/12/2023", 4, 21, 200, 10, "TravelFun", false, "30/06/2023");
 
         }
 
