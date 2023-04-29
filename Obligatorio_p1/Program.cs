@@ -60,25 +60,19 @@ namespace Obligatorio_p1
                 string fechaNacimiento = Console.ReadLine();
                 DateTime.TryParse(fechaNacimiento, out DateTime fechaNac);
             
-                Console.WriteLine("Ingrse habitacion: ");
+                Console.WriteLine("Ingrese habitacion: ");
                 string habitacion = Console.ReadLine();
 
-                Console.WriteLine("Ingrese nivel de fidelizaion: ");
+                Console.WriteLine("Ingrese nivel de fidelizacion: ");
                 Int32.TryParse(Console.ReadLine(), out int nivelFidelizacion);
 
-                UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+                //UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
 
-                try
-                {
-
-                    adminHostel.AltaHuesped(usuarioAlta);
-                }catch(Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                adminHostel.AltaHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+                
             }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
@@ -95,7 +89,7 @@ namespace Obligatorio_p1
                 adminHostel.EstablecerDescuento(nombreProveedor, descuento);
             }catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
@@ -166,30 +160,11 @@ namespace Obligatorio_p1
                 case 5:
                     AltaHuesped();
                     break;
-                case 6:
-                    CrearProveedor();
-                    break;
 
             }
             return opcion;
         }
 
-        // No va esto, solo es testing
-        public static void CrearProveedor()
-        {
-            Console.WriteLine("Ingrese un nombre: ");
-            string nombreProv = Console.ReadLine();
-
-            Console.WriteLine("Ingrese un telefono: ");
-            string telProv = Console.ReadLine();
-
-            Console.WriteLine("Ingrese una direccion: ");
-            string direccProv = Console.ReadLine();
-
-            Console.WriteLine("Ingrese nro descuento: ");
-            Int32.TryParse(Console.ReadLine(), out int descuentoProv);
-
-            adminHostel.AltaProveedor(nombreProv, telProv, direccProv, descuentoProv);
-        }
+        
     }
 }

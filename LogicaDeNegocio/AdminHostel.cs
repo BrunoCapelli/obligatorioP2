@@ -196,8 +196,9 @@ namespace LogicaDeNegocio
             return resultado;
         }
 
-        public void AltaHuesped(UsuarioHuesped userHuesped)
+        public void AltaHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel)
         {
+            UsuarioHuesped userHuesped = new UsuarioHuesped(Email, Password, Nombre, Apellido, tipoDoc, NroDocumento, FechaNacimiento, Habitacion, Nivel);
             try
             {
                 userHuesped.Validate();
@@ -276,6 +277,7 @@ namespace LogicaDeNegocio
     
         public AdminHostel()
         {
+            
             // Precarga de Proveedores
             AltaProveedor("DreamWorks S.R.L.", "23048549", "Suarez 3380 Apto 304", 10);
             AltaProveedor("Estela Umpierrez S.A.", "33459678", "Lima 2456", 7);
@@ -287,7 +289,7 @@ namespace LogicaDeNegocio
             AltaProveedor("Gimenez S.R.L.", "29001010", "Andes 1190", 7);
             AltaProveedor("", "22041120", "Agraciada 2512 Apto. 1", 8);
             AltaProveedor("Norberto Molina", "22001189", "Paraguay 2100", 9);
-
+            
             // Precarga de Actividades Propias
             
             AltaActividadPropia("Yoga", "Masajes, belleza, relax", "01/11/2023", 25, 18, 10, 25, "Juan Orozco", "Spa", false);
@@ -300,13 +302,13 @@ namespace LogicaDeNegocio
             AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 25, 40, "María García", "Patio de eventos", true);
             AltaActividadPropia("Gimnasia Acuática", "Gimnasia acuática en la piscina", "20/05/2023", 15, 16, 5, 12, "José Martínez", "Piscina del hotel", true);
             AltaActividadPropia("Tour Histórico", "Tour guiado por los lugares históricos más importantes de la ciudad", "05/03/2023", 20, 16, 25, 15, "Alejandro Gómez", "Recepción del hotel", false);
-            
 
+            
             // Precarga de Actividades Terciarizadas
             AltaActividadTerciarizada("Paseo en caballo", "Paseo en caballo por el jardin del hotel", "15/02/2023", 25, 16, 12, 65, "DreamWorks S.R.L.", true, "01/11/2023");
             AltaActividadTerciarizada("Senderismo", "Excursión de senderismo por las montañas", "05/03/2023", 15, 18, 25, 120, "DreamWorks S.R.L.", false, "30/06/2023");
             AltaActividadTerciarizada("Parapente", "Experiencia de vuelo en parapente con guía profesional", "15/04/2023", 10, 21, 80, 80, "DreamWorks S.R.L.", false, "30/11/2023");
-
+           
             AltaActividadTerciarizada("Buceo", "Inmersión de buceo en los arrecifes", "20/05/2023", 8, 18, 100, 30, "Estela Umpierrez S.A.", false, "30/09/2023");
             AltaActividadTerciarizada("Paintball", "Juego de paintball en campo de batalla", "10/06/2023", 20, 16, 20, 60, "Estela Umpierrez S.A.", false, "30/12/2023");
             AltaActividadTerciarizada("Buggy", "Experiencia de manejo de buggy todo terreno", "15/07/2023", 10, 21, 60, 80, "Estela Umpierrez S.A.", false, "31/10/2023");
@@ -314,10 +316,10 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Kitesurf", "Clase de kitesurf con equipo incluido", "20/08/2023", 6, 18, 150, 10, "TravelFun", false, "31/12/2023");
             AltaActividadTerciarizada("Escalada en Roca", "Excursión de escalada en roca", "15/09/2023", 12, 16, 40, 50, "TravelFun", false, "31/03/2023");
             AltaActividadTerciarizada("Rafting", "Excursión de rafting por el río", "20/10/2023", 8, 18, 70, 40, "TravelFun", false, "30/04/2023");
-
+            
             AltaActividadTerciarizada("Observación de Estrellas", "Noche de observación de estrellas con telescopios", "15/11/2023", 20, 12, 5, 30, "Rekreation S.A.", false, "28/02/2023");
             AltaActividadTerciarizada("Globo Aerostático", "Experiencia de vuelo en globo aerostático", "20/12/2023", 4, 21, 200, 10, "Rekreation S.A.", false, "30/06/2023");
-            AltaActividadTerciarizada("Taller de cocina", "Aprende a cocinar platos típicos de la región", "10/03/2023", 20, 18, 25, 30, "Chef Martín Gómez", true, "15/03/2023");
+            AltaActividadTerciarizada("Taller de cocina", "Aprende a cocinar platos típicos de la región", "10/03/2023", 20, 18, 25, 30, "Rekreation S.A.", true, "15/03/2023");
 
             AltaActividadTerciarizada("Tour en bicicleta", "Recorre los mejores paisajes en bicicleta", "20/04/2023", 15, 14, 10, 50, "Alonso & Umpierrez", true, "25/04/2023");
             AltaActividadTerciarizada("Clases de yoga", "Despierta tu cuerpo y mente con yoga", "05/05/2023", 30, 16, 8, 40, "Alonso & Umpierrez", true, "10/05/2023");
@@ -329,21 +331,20 @@ namespace LogicaDeNegocio
 
 
 
+           
 
+          // Precarga de Huesped
 
-            // Precarga de Huesped
+          DateTime fechaNac = new DateTime();
+          string fecha = "17/03/1980";
+          DateTime.TryParse(fecha, out fechaNac);
 
-            DateTime fechaNac = new DateTime();
-            string fecha = "17/03/1980";
-            DateTime.TryParse(fecha, out fechaNac);
-            
-            UsuarioHuesped user = new UsuarioHuesped("igdiaz@hotmail.com", "asdsds121", "Ignacio", "Diaz", TipoDocumento.CI, "212365547", fechaNac, "B02", 2);
-            AltaHuesped(user);
-            
+          AltaHuesped("igdiaz@hotmail.com", "asdsds121", "Ignacio", "Diaz", TipoDocumento.CI, "212365547", fechaNac, "B02", 2);
 
+          
         }
 
-        
+
 
 
 
