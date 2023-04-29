@@ -18,9 +18,7 @@ namespace LogicaDeNegocio
         private DateTime _fechaNacimiento;
         private int _nivel;
 
-        private string _email;
-        private string _password;
-
+       
         #region Propiedades
         public TipoDocumento TipoDoc {
             get { return _tipoDoc; }
@@ -64,10 +62,8 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        public UsuarioHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel) : base(Email, Password)
+        public UsuarioHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel): base(Email, Password)
         {
-            _email = Email;
-            _password = Password;
             _nombre = Nombre;
             _apellido = Apellido;
             _tipoDoc = tipoDoc;
