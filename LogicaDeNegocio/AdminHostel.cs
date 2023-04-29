@@ -116,12 +116,15 @@ namespace LogicaDeNegocio
 
         //
 
-        public void AltaActividadTerciarizada(string nombre, string descripcion, string fechaIn, int cantMaxPer, int edadMinima, decimal costo, int cupos, string nombreProveedor, bool confirmada, DateTime fechaConfirmacion)
+        public void AltaActividadTerciarizada(string nombre, string descripcion, string fechaIn, int cantMaxPer, int edadMinima, decimal costo, int cupos, string nombreProveedor, bool confirmada, string fechaConfirmacionIn)
         {//aca se va a llamar a los metodos correspondientes para la subclase ActividadTerciarizada
          //antes de todo buscamos al proveedor
 
             DateTime fecha = new DateTime();
             DateTime.TryParse(fechaIn, out fecha);
+
+            DateTime fechaConfirmacion = new DateTime();
+            DateTime.TryParse(fechaConfirmacionIn, out fechaConfirmacion);
 
             Proveedor prov = BuscarProveedor(nombreProveedor);
             if (prov != null) { //si no hay proveedor no puedo crear la actividad terciarizada por la agregacion que esta en UML
@@ -285,9 +288,8 @@ namespace LogicaDeNegocio
             AltaProveedor("Norberto Molina", "22001189", "Paraguay 2100", 9);
 
             // Precarga de Actividades Propias
-
             AltaActividadPropia("Yoga", "Masajes, belleza, relax", "01/11/2023", 25, 18, 10, 25, "Juan Orozco", "Spa", false);
-            AltaActividadPropia("Baila con Ritmo", "Clase de baile de salsa y bachata", "05/07/2023", 20, 16, 15, 15, "Pedro Rodríguez", "SAlon principal", false);
+            AltaActividadPropia("Baila con Ritmo", "Clase de baile de salsa y bachata", "05/07/2023", 20, 16, 15, 15, "Pedro Rodríguez", "Salon principal", false);
             AltaActividadPropia("Sabores del Caribe", "Comida caribeña ", "15/08/2023", 25, 18, 50, 20, "Laura Fernández", "Segunda planta", false);
             AltaActividadPropia("Spa Relax", "Día de relajación en el spa del hotel con masajes, tratamientos de belleza", "25/09/2023", 10, 21, 100, 8, "Ana María Torres", "Spa del hotel", false);
             AltaActividadPropia("Arte y Pintura", "Clase de pintura para principiantes", "10/10/2023", 15, 12, 20, 12, "Sofía Gómez", "Terraza del hotel", true);
@@ -296,6 +298,10 @@ namespace LogicaDeNegocio
             AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 25, 40, "María García", "Patio de eventos", true);
             AltaActividadPropia("Gimnasia Acuática", "Gimnasia acuática en la piscina", "20/05/2023", 15, 16, 5, 12, "José Martínez", "Piscina del hotel", true);
             AltaActividadPropia("Tour Histórico", "Tour guiado por los lugares históricos más importantes de la ciudad", "05/03/2023", 20, 16, 25, 15, "Alejandro Gómez", "Recepción del hotel", false);
+
+            // Precarga de Actividades Terciarizadas
+            AltaActividadTerciarizada("Paseo en caballo", "Paseo en caballo por el jardin del hotel", "15/02/2023", 25, 16, 12, 65, "Alonso & Umpierrez", true, "")
+
         }
 
         
