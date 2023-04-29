@@ -28,7 +28,9 @@ namespace LogicaDeNegocio
         #region Constructor
         public Usuario(string Email, string Password)
         {
-            Usuario user = new Usuario(Email, Password);
+            //Usuario user = new Usuario(Email, Password);
+            _email = Email;
+            _password = Password;
         }
         #endregion
 
@@ -38,10 +40,12 @@ namespace LogicaDeNegocio
             try
             {
                 // Validar que el arroba este en el medio
-                if (!Regex.IsMatch(Email, "[a-zA-Z]" + "@" + "[a-zA-Z"))
+                
+                if (!Regex.IsMatch(_email, "[a-zA-Z]" + "@" + "[a-zA-Z]"))
                 {
                     throw new Exception("El email ingresado no es valido");
                 }
+                
                 // Validar largo de la contraseña
                 if (_password.Length < 8)
                 {

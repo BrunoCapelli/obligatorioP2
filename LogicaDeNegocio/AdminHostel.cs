@@ -315,6 +315,16 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Observación de Estrellas", "Noche de observación de estrellas con telescopios", "15/11/2023", 20, 12, 5, 30, "Norberto Molina", false, "28/02/2023");
             AltaActividadTerciarizada("Globo Aerostático", "Experiencia de vuelo en globo aerostático", "20/12/2023", 4, 21, 200, 10, "TravelFun", false, "30/06/2023");
 
+            // Precarga de Huesped
+
+            DateTime fechaNac = new DateTime();
+            string fecha = "17/03/1980";
+            DateTime.TryParse(fecha, out fechaNac);
+            
+            UsuarioHuesped user = new UsuarioHuesped("igdiaz@hotmail.com", "asdsds121", "Ignacio", "Diaz", TipoDocumento.CI, "212365547", fechaNac, "B02", 2);
+            AltaHuesped(user);
+            
+
         }
 
         

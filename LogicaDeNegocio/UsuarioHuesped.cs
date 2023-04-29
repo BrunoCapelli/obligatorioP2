@@ -90,14 +90,11 @@ namespace LogicaDeNegocio
                 {
                     throw new Exception("El campo habitacion no puede estar vacío.");
                 }
-                
+                /*
                 if (!Regex.IsMatch(_nroDocumento, "\\d\\.\\d\\d\\d\\.\\d\\d\\d-\\d"))
                 {
                     throw new Exception("El documento ingresado no es valido.");
-                }
-            }catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
+                }*/
             }
             catch {
                 throw;
