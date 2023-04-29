@@ -7,8 +7,13 @@ namespace Obligatorio_p1
         private static AdminHostel adminHostel = new AdminHostel();
         static void Main(string[] args)
         {
-            MostrarMenu();
+            int opcion= 1;
+            while(opcion != 0)
+            {
 
+                MostrarMenu();
+                opcion = SeleccionarOpcion();
+            }
 
 
 
@@ -126,22 +131,26 @@ namespace Obligatorio_p1
         }
         public static void MostrarMenu()
         {
-            Console.WriteLine(" --- Bienvenido a su hostel --- \n" +
-                "Elija una de las opciones:\n " +
+            Console.WriteLine("\n --- Bienvenido a su hostel --- \n" +
+                "Elija una de las opciones:\n" +
                 "1 - Mostrar listado de actividades\n" +
                 "2 - Mostar listado de proveedores\n" +
                 "3 - Mostrar actividades por fecha y costo\n" +
                 "4 - Establecer el valor de promoción para actividades de un proveedor\n" +
-                "5 - Realizar alta de un huesped");
+                "5 - Realizar alta de un huesped\n" +
+                "0 - Cerrar aplicacion");
 
         }
         
-        public static void SeleccionarOpcion()
+        public static int SeleccionarOpcion()
         {
             Int32.TryParse(Console.ReadLine(), out int opcion);
 
             switch(opcion)
             {
+                case 0:
+                    opcion = 0; 
+                    break;
                 case 1:
                     MostrarActividades();
                     break;
@@ -157,10 +166,30 @@ namespace Obligatorio_p1
                 case 5:
                     AltaHuesped();
                     break;
-
+                case 6:
+                    CrearProveedor();
+                    break;
 
             }
+            return opcion;
         }
 
+        // No va esto, solo es testing
+        public static void CrearProveedor()
+        {
+            Console.WriteLine("Ingrese un nombre: ");
+            string nombreProv = Console.ReadLine();
+
+            Console.WriteLine("Ingrese un telefono: ");
+            string telProv = Console.ReadLine();
+
+            Console.WriteLine("Ingrese una direccion: ");
+            string direccProv = Console.ReadLine();
+
+            Console.WriteLine("Ingrese nro descuento: ");
+            Int32.TryParse(Console.ReadLine(), out int descuentoProv);
+
+            adminHostel.AltaProveedor(nombreProv, telProv, direccProv, descuentoProv);
+        }
     }
 }
