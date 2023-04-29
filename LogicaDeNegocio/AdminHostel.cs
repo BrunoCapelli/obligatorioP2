@@ -339,7 +339,7 @@ namespace LogicaDeNegocio
           string fecha = "17/03/1980";
           DateTime.TryParse(fecha, out fechaNac);
 
-          AltaHuesped("igdiaz@hotmail.com", "asdsds121", "Ignacio", "Diaz", TipoDocumento.CI, "212365547", fechaNac, "B02", 2);
+          AltaHuesped("igdiaz@hotmail.com", "brunocapelli", "Ignacio", "Diaz", TipoDocumento.CI, "52722947", fechaNac, "B02", 2);
 
           
         }

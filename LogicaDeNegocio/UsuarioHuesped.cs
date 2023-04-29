@@ -90,13 +90,44 @@ namespace LogicaDeNegocio
                 {
                     throw new Exception("El campo habitacion no puede estar vacío.");
                 }
-                /*
-                if (!Regex.IsMatch(_nroDocumento, "\\d\\.\\d\\d\\d\\.\\d\\d\\d-\\d"))
+
+                if (_nroDocumento.Length == 8)
+                { //esto es por si me pasan una cedula de menos de 8 caracteres
+
+                    int digitoVerificador = 0;
+                    bool correcto = Int32.TryParse(_nroDocumento, out int nroCedula);
+                    if (correcto == true)
+                    { //esto es por si me pasan un string no numerico
+                        int[] chequeo = { 8, 1, 2, 3, 4, 7, 6 };
+                        int[] cedulaArray = new int[8];
+                        for (int i = 0; i <= 7; i++)
+                        {
+                            cedulaArray[i] = (int)Char.GetNumericValue(_nroDocumento[i]);
+                        }
+
+                        for (int i = 0; i <= 6; i++)
+                        {
+                            digitoVerificador += chequeo[i] * cedulaArray[i];
+                        }
+                        if (digitoVerificador % 10 != cedulaArray[7])
+                        { //esto es por si la cedula no es valida
+                            throw new Exception("El documento ingresado no es valido.");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("El documento ingresado no es valido.");
+                    }
+
+                }
+                else
                 {
                     throw new Exception("El documento ingresado no es valido.");
-                }*/
+
+                }
             }
-            catch {
+            catch
+            {
                 throw;
             }
         }

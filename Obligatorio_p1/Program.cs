@@ -117,9 +117,9 @@ namespace Obligatorio_p1
 
                 Console.WriteLine(adminHostel.ListarActividadesFiltradas(costo, fechaFiltradaDesde, fechaFiltradaHasta));
             }
-            catch
+            catch (Exception ex) 
             {
-                throw new Exception("Los datos de la fecha ingresada no son validos");
+                Console.WriteLine("Error: "+ ex.Message);
             }
 
         }
