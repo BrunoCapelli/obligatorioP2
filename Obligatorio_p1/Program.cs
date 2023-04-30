@@ -46,17 +46,17 @@ namespace Obligatorio_p1
                 Console.WriteLine("Ingrese un email: \n");
                 string email = Console.ReadLine();
 
-                Console.WriteLine("Ingrese un password: \n");
+                Console.WriteLine("Ingrese una contraseña: (Debe tener al menos 8 caracteres)\n");
                 string password = Console.ReadLine();
 
-                Console.WriteLine("Ingrese nro de documento: \n");
+                Console.WriteLine("Ingrese nro de documento: (Sin puntos ni guiones)\n");
                 string nroDocumento = Console.ReadLine();
 
                 Console.WriteLine("Ingrese un tipo de Documento (CI, DNI, OTRO): \n");
                 string documento = Console.ReadLine();
                 TipoDocumento tipoDoc = (TipoDocumento)Enum.Parse(typeof(TipoDocumento), documento);
                 
-                Console.WriteLine("Ingrese fecha de nacimiento: ");
+                Console.WriteLine("Ingrese fecha de nacimiento: (dd/mm/yyyy)");
                 string fechaNacimiento = Console.ReadLine();
                 DateTime.TryParse(fechaNacimiento, out DateTime fechaNac);
             
