@@ -44,7 +44,7 @@ namespace LogicaDeNegocio
             int i = 0;
 
             while (i < _proveedores.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
-                if (_proveedores[i].NombreProveedor == nombre) {
+                if (_proveedores[i].NombreProveedor.ToUpper() == nombre.ToUpper()) {
                     existe = true;
                     prov = _proveedores[i];
                 }

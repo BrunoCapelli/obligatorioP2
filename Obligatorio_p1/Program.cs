@@ -34,7 +34,6 @@ namespace Obligatorio_p1
         {
             try
             {
-
                 Console.WriteLine("--- ALTA DE USUARIO ---\n");
 
                 Console.WriteLine("Ingrese un nombre: \n");
@@ -53,7 +52,7 @@ namespace Obligatorio_p1
                 string nroDocumento = Console.ReadLine();
 
                 Console.WriteLine("Ingrese un tipo de Documento (CI, DNI, OTRO): \n");
-                string documento = Console.ReadLine();
+                string documento = Console.ReadLine().ToUpper();
                 TipoDocumento tipoDoc = (TipoDocumento)Enum.Parse(typeof(TipoDocumento), documento);
                 
                 Console.WriteLine("Ingrese fecha de nacimiento: (dd/mm/yyyy)");
@@ -66,9 +65,14 @@ namespace Obligatorio_p1
                 Console.WriteLine("Ingrese nivel de fidelizacion: ");
                 Int32.TryParse(Console.ReadLine(), out int nivelFidelizacion);
 
-                //UsuarioHuesped usuarioAlta = new UsuarioHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+                if(nombre == "" || apellido == "" || email == "" || password.Length <8 || nroDocumento.Length != 8 || documento.ToUpper() != "CI" || documento.ToUpper() != "DNI" || documento.ToUpper() != "OTRO") {
+                    Console.WriteLine("\nDatos incorrectos, intente nuevamente");
+                } else {
 
-                adminHostel.AltaHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+                    adminHostel.AltaHuesped(email, password, nombre, apellido, tipoDoc, nroDocumento, fechaNac, habitacion, nivelFidelizacion);
+                    Console.WriteLine("\nUsuario dado de alta correctamente");
+                }
+
                 
             }catch(Exception ex)
             {
@@ -83,11 +87,19 @@ namespace Obligatorio_p1
                 Console.WriteLine("Ingrese el nombre del proveedor: ");
                 string nombreProveedor = Console.ReadLine();
 
-                Console.WriteLine("Ingrese el valor del descuento: ");
-                Int32.TryParse(Console.ReadLine(), out int descuento);
+                if (nombreProveedor != "") {
 
-                adminHostel.EstablecerDescuento(nombreProveedor, descuento);
-            }catch(Exception ex)
+                    Console.WriteLine("Ingrese el valor del descuento: ");
+                    Int32.TryParse(Console.ReadLine(), out int descuento);
+
+                    adminHostel.EstablecerDescuento(nombreProveedor, descuento);
+                    Console.WriteLine("\nModificacion de descuento correcta");
+                }
+                else {
+                    Console.WriteLine("\nEl nombre de Proveedor no puede ser vacio");
+                }
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
