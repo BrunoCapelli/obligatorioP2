@@ -77,6 +77,7 @@ namespace LogicaDeNegocio
         #region Metodos
 
         public void Validate()
+            //poner validacion tipo de DOC
         {
             try
             {

@@ -158,6 +158,7 @@ namespace LogicaDeNegocio
         {
             string resultado = null;
             resultado = "Actividades: \n";
+            //cambiar esto a polimorfismo
             foreach (ActividadTerciarizada act in _actividades.OfType<ActividadTerciarizada>())
             {
                 resultado += $"\n ID: {act.Id}" +
