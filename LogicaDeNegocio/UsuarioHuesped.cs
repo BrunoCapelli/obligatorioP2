@@ -77,8 +77,7 @@ namespace LogicaDeNegocio
         #region Metodos
 
         public void Validate()
-        //poner validacion tipo de DOC
-            {
+        {
             try
             {
                 base.Validate(); // llamo al validar de la clase padre primero

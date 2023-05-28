@@ -20,7 +20,7 @@ namespace LogicaDeNegocio
         private int _edadMinima;
         protected List<Agenda> _agendas = new List<Agenda>();
         private decimal _costoFinal = 0;
-        private int _cuposDisponibles; //sacar esto y calcularlo cada vez que damos el alta con cantidad maxima de personas
+        private int _cuposDisponibles;
         private static int s_ultimoId = 0;
 
 
