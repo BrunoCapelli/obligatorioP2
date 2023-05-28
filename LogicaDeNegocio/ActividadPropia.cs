@@ -22,8 +22,8 @@ namespace LogicaDeNegocio {
 
         #region Constructor
 
-        public ActividadPropia(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo, int cupos,string responsable,string lugar,bool exterior)
-            :base(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, cupos) { //el base es para que se llame al constructor de la clase padre
+        public ActividadPropia(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo, string responsable,string lugar,bool exterior)
+            :base(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo) { //el base es para que se llame al constructor de la clase padre
             _responsable = responsable;
             _lugar = lugar;
             _isExterior = exterior;

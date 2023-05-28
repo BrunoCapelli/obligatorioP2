@@ -21,8 +21,8 @@ namespace LogicaDeNegocio {
 
         #region Constructor 
         
-        public ActividadTerciarizada(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo, int cupos,Proveedor proveedor,bool confirmada, DateTime fechaConfirmacion)
-            :base(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, cupos) { //llamo al constructor de la clase padre
+        public ActividadTerciarizada(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo,Proveedor proveedor,bool confirmada, DateTime fechaConfirmacion)
+            :base(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo) { //llamo al constructor de la clase padre
             this._proveedor= proveedor;
             this._isConfirmada= confirmada;
             this._fechaConfirmacion= fechaConfirmacion;
