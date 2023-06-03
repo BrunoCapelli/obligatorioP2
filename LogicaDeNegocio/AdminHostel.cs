@@ -11,8 +11,22 @@ namespace LogicaDeNegocio
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Actividad> _actividades = new List<Actividad>();
         private List<Proveedor> _proveedores = new List<Proveedor>();
+        private static AdminHostel s_instance;
 
         #region Metodos
+
+        public static AdminHostel GetInstancia
+        {
+            get
+            {
+                if (s_instance == null)
+                {
+                    s_instance = new AdminHostel();
+                }
+                return s_instance;
+            }
+        }
+
         // Validar que no exista un usuario con los datos ingresados
 
         public UsuarioHuesped BuscarHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) //mejor que un existe es usar un Buscar
@@ -150,33 +164,28 @@ namespace LogicaDeNegocio
             }
         }
 
-        public void altaAgenda() {
+        public void AltaAgenda(string userDoc, TipoDocumento tipoDoc, string nomActividad, DateTime fechaAct) 
+        {
+            UsuarioHuesped userH = BuscarHuesped(userDoc, tipoDoc);
+
+            Actividad act = BuscarActividad(nomActividad, fechaAct);
+
+            if(userH.ObtenerEdad() > 18)
+            {
+                act.AgregarAgenda(userH);
+
+            }
 
         }
 
         public string ListarActividades()
         {
             string resultado = null;
-            resultado = "Actividades: \n";
-            //cambiar esto a polimorfismo
-            foreach (ActividadTerciarizada act in _actividades.OfType<ActividadTerciarizada>())
+            resultado = "Actividades: ";
+            
+            foreach (Actividad act in _actividades)
             {
-                resultado += $"\n ID: {act.Id}" +
-                    $"\n Nombre: {act.Nombre}" +
-                    $"\n Descripcion: {act.Descripcion} " +
-                    $"\n Fecha: {act.Fecha} " +
-                    $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
-                    $"\n Edad min para realizarla: {act.EdadMinina} \n";
-            }
-
-            foreach (ActividadPropia act in _actividades.OfType<ActividadPropia>())
-            {
-                resultado += $"\n ID: {act.Id}" +
-                    $"\n Nombre: {act.Nombre}" +
-                    $"\n Descripcion: {act.Descripcion} " +
-                    $"\n Fecha: {act.Fecha} " +
-                    $"\n Cant. max. personas: {act.CantidadMaxPersonas} " +
-                    $"\n Edad min para realizarla: {act.EdadMinina} \n";
+                resultado += act.ToString();
             }
 
             return resultado;
@@ -344,12 +353,9 @@ namespace LogicaDeNegocio
         #endregion
         #region Constructor
     
-        public AdminHostel()
+        private AdminHostel()
         {
-
             precargaDatos();
-
-
 
         }
 

@@ -73,16 +73,30 @@ namespace LogicaDeNegocio
         }
 
 
-        public virtual string AgregarAgenda(UsuarioHuesped huesped) { //el comportamiento es distinto en cada subclase
-            return "";
-           
-        }
+        public abstract string AgregarAgenda(UsuarioHuesped huesped);
 
         public int CompareTo(Actividad act)
         {
             return _costoFinal.CompareTo(act._costoFinal);
         }
 
+        public bool hayCupos()
+        {
+            int resultado = _cantidadMaxPersonas - _agendas.Count;
+            return resultado > 0;
+        }
+
+        public override string ToString()
+        {
+            string resultado = "";
+            resultado += $" ID: {Id}" +
+                    $"Nombre: {Nombre}" +
+                    $" Descripcion: {Descripcion} " +
+                    $" Fecha: {Fecha} " +
+                    $" Cant. max. personas: {CantidadMaxPersonas} " +
+                    $" Edad min para realizarla: {EdadMinina} ";
+            return resultado;
+        }
         #endregion
 
 

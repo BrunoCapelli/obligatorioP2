@@ -40,7 +40,8 @@ namespace LogicaDeNegocio {
             }
         }
 
-        public override string AgregarAgenda(UsuarioHuesped huesped) {
+        public override string AgregarAgenda(UsuarioHuesped huesped) 
+        {
             string resultado = "";
             //base.AgregarAgenda(huesped, estadoAgenda);
             int nivel = huesped.NivelFidelizacion;
@@ -54,21 +55,27 @@ namespace LogicaDeNegocio {
 
             }
 
+            if (hayCupos())
+            {
+                Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
+                this._agendas.Add(agenda);
 
-            Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
-            this._agendas.Add(agenda);
 
-            resultado = "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
-                   + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
-                   + this.Fecha.ToString() + "\nLugar: " + this.Lugar;
-            if (costoFinal == 0) {
-                resultado += "\nCosto: Actividad gratuita";
+                /*resultado =  "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
+                       + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
+                       + this.Fecha.ToString() + "\nLugar: " + this.Lugar;
+                if (costoFinal == 0) {
+                    resultado += "\nCosto: Actividad gratuita";
+                }
+                else {
+                    resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+                }
+                resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();*/
             }
-            else {
-                resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+            else
+            {
+                throw new Exception("No hay cupos disponibles");
             }
-            resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();
-
             return resultado;
         }
 

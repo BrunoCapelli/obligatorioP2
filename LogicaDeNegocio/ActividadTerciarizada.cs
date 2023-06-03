@@ -52,18 +52,26 @@ namespace LogicaDeNegocio {
                     estadoAgenda = EstadoAgenda.PENDIENTE_PAGO;
 
                 }
-                Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
-                this._agendas.Add(agenda);
-                resultado = "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
-                    + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
-                    + this.Fecha.ToString();
-                if (costoFinal == 0) {
-                    resultado += "\nCosto: Actividad gratuita";
-                } else {
-                    resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+                if (hayCupos())
+                {
+                    Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
+                    this._agendas.Add(agenda);
+                    resultado = "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
+                        + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
+                        + this.Fecha.ToString();
+                    if (costoFinal == 0) {
+                        resultado += "\nCosto: Actividad gratuita";
+                    } else {
+                        resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+                    }
+                    resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();
+                    resultado += "\nProveedor: " + this.Proveedor.NombreProveedor;
+
                 }
-                resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();
-                resultado += "\nProveedor: " + this.Proveedor.NombreProveedor;
+                else
+                {
+                    throw new Exception("No hay cupos disponibles");
+                }
 
             }
             else {

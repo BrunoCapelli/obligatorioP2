@@ -4,6 +4,7 @@ namespace Obligatorio_p1
 {
     internal class Program
     {
+        /*
         private static AdminHostel adminHostel = new AdminHostel();
         static void Main(string[] args)
         {
@@ -177,7 +178,7 @@ namespace Obligatorio_p1
             }
             return opcion;
         }
-
+        */
         
     }
 }

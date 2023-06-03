@@ -82,6 +82,13 @@ namespace LogicaDeNegocio
             try
             {
                 base.Validate(); // llamo al validar de la clase padre primero
+
+                // Valdiar tipo de documento
+                if(_tipoDoc != TipoDocumento.CI && _tipoDoc != TipoDocumento.PASAPORTE && _tipoDoc != TipoDocumento.OTROS)
+                {
+                    throw new Exception("Tipo de documento no valido.");
+                }
+
                 // Validar que el campo Habitacion no sea vacio
                 if (_habitacion.Length < 0)
                 {
@@ -127,6 +134,14 @@ namespace LogicaDeNegocio
             {
                 throw;
             }
+        }
+
+        public int ObtenerEdad()
+        {
+            // Nico ponelo bonito
+            int edad = DateTime.Now.Year - FechaNacimiento.Year;
+
+            return edad;
         }
 
 
