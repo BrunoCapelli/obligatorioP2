@@ -66,7 +66,7 @@ namespace Obligatorio_p1
                 Console.WriteLine("Ingrese nivel de fidelizacion: ");
                 Int32.TryParse(Console.ReadLine(), out int nivelFidelizacion);
 
-                if(nombre == "" || apellido == "" || email == "" || password.Length <8 || nroDocumento.Length != 8 || documento.ToUpper() != "CI" || documento.ToUpper() != "DNI" || documento.ToUpper() != "OTRO" || fechaNac < DateTime.MinValue) {
+                if(nombre == "" || apellido == "" || email == "" || password.Length <8 || nroDocumento.Length != 8 || (documento.ToUpper() != "CI" && documento.ToUpper() != "DNI" && documento.ToUpper() != "OTRO" && fechaNac < DateTime.MinValue)) {
                     Console.WriteLine("\nDatos incorrectos, intente nuevamente");
                 } else {
 
