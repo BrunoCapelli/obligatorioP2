@@ -309,6 +309,19 @@ namespace LogicaDeNegocio
 
         }
 
+        public List<Agenda> ListarAgendas()
+        {
+            List<Agenda> agendasAux = new List<Agenda>();
+            foreach(Actividad a in _actividades)
+            {
+                foreach(Agenda ag in a.Agendas)
+                {
+                    agendasAux.Add(ag);
+                }
+            }
+            return agendasAux;
+        }
+
         public void precargaDatos()
         {
             // Precarga de Proveedores
@@ -373,6 +386,11 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fecha, out fechaNac);
 
             AltaHuesped("igdiaz@hotmail.com", "brunocapelli", "Ignacio", "Diaz", TipoDocumento.CI, "52722947", fechaNac, "B02", 2);
+
+            DateTime fechaAge = new DateTime();
+            string fecha2 = "25/02/2023";
+            DateTime.TryParse(fecha2, out fechaAge);
+            AltaAgenda("52722947", TipoDocumento.CI, "Fiesta de Disfraces", fechaAge);
 
         }
 

@@ -4,8 +4,9 @@ namespace AppWebMVC.Controllers
 {
     public class UsuarioController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ListarAgendas()
         {
+            
             return View();
         }
     }

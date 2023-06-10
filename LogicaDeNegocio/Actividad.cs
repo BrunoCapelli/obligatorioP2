@@ -97,6 +97,12 @@ namespace LogicaDeNegocio
                     $" Edad min para realizarla: {EdadMinina} ";
             return resultado;
         }
+
+        public virtual string GetProveedor()
+        {
+            string proveedor = null;
+            return proveedor;
+        }
         #endregion
 
 

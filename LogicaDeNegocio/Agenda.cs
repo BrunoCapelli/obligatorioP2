@@ -27,6 +27,7 @@ namespace LogicaDeNegocio
             _fechaCreacionAgenda= DateTime.Now;
             _costoFinal = costoFinal;
         }
+
         #endregion
 
     }

@@ -79,6 +79,11 @@ namespace LogicaDeNegocio {
             }
             return resultado;
         }
+
+        public override string GetProveedor()
+        {
+            return _proveedor.NombreProveedor;
+        }
         #endregion
     }
 }

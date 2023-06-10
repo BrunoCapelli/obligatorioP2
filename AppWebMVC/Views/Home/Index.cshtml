@@ -7,3 +7,24 @@
     <h1 class="display-4">Welcome @AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).Email </h1>
     
 </div>
+
+
+@if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Huesped")
+{
+    <script>
+
+        document.querySelector("#navbar").insertAdjacentHTML('beforeend', ` <li class="nav-item"> <a class="nav-link text-dark" href="Usuario/ListarAgendas">Ver agendas</a> </li>`);
+    </script>
+}
+
+@if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Opeador")
+{
+    <script>
+
+        document.querySelector("#navbar").insertAdjacentHTML('beforeend', ` <li class="nav-item"> <a class="nav-link text-dark" href="Usuario/ListarAgendas">Ver agendas</a> </li>`);
+
+    </script>
+}
+
+     
+    
