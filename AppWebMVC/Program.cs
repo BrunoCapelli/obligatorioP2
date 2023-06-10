@@ -9,6 +9,9 @@ namespace AppWebMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //Añado que el builder de Session
+            builder.Services.AddSession();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,6 +28,9 @@ namespace AppWebMVC
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Añado que la app use Session
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

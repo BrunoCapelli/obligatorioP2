@@ -13,8 +13,7 @@ namespace LogicaDeNegocio
         private List<Proveedor> _proveedores = new List<Proveedor>();
         private static AdminHostel s_instance;
 
-        #region Metodos
-
+        #region Singleton
         public static AdminHostel GetInstancia
         {
             get
@@ -26,7 +25,9 @@ namespace LogicaDeNegocio
                 return s_instance;
             }
         }
+        #endregion
 
+        #region Metodos
         // Validar que no exista un usuario con los datos ingresados
 
         public UsuarioHuesped BuscarHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) //mejor que un existe es usar un Buscar
