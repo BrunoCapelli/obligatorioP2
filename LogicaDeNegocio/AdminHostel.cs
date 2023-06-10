@@ -52,6 +52,31 @@ namespace LogicaDeNegocio
             return huesped;
         }
 
+        public Usuario BuscarPorEmail(string userEmail)
+        {
+            Usuario huesped = null;
+            Usuario huespedAux = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _usuarios.Count && existe == false)
+            {
+                huespedAux = _usuarios[i];
+                if (huespedAux != null)
+                {
+                    if (huespedAux.Email == userEmail)
+                    {
+                        huesped = huespedAux;
+                        existe = true;
+                    }
+                }
+                i++;
+            }
+
+
+            return huesped;
+        }
+
 
         public Proveedor BuscarProveedor(string nombre) {
             Proveedor prov = null;
