@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LogicaDeNegocio;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AppWebMVC.Controllers
 {
@@ -7,6 +8,12 @@ namespace AppWebMVC.Controllers
         public IActionResult ListarAgendas()
         {
             
+            return View();
+        }
+
+        public IActionResult DatosPersonales()
+        {
+            ViewBag.Usuario = AdminHostel.GetInstancia.BuscarPorEmail(HttpContext.Session.GetString("email"));
             return View();
         }
     }
