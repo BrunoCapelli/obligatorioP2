@@ -4,7 +4,7 @@ namespace AppWebMVC.Controllers
 {
     public class ProveedorController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ListarProveedores()
         {
             return View();
         }

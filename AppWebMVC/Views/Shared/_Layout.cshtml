@@ -43,11 +43,17 @@
                             <li class="nav-item"> 
                                 <a class="nav-link text-dark" href="Usuario/ListarAgendas">Ver agendas</a> 
                             </li>
+                            @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Operador")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="Proveedor/ListarProveedores">Ver Proveedores</a>
+                                </li>
+                            }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Log out</a>
                             </li>
                         }
-                       
+
                     </ul>
                 </div>
             </div>

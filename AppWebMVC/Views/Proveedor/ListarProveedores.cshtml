@@ -1,0 +1,40 @@
+﻿@using LogicaDeNegocio
+
+<div>
+    <table>
+
+
+
+    </table>
+    @foreach(Proveedor prov in AdminHostel.GetInstancia.ListarProveedores())
+    {
+        
+    }
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre del Proveedor</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Descuento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Proveedor prov in AdminHostel.GetInstancia.ListarProveedores())
+            {
+                <tr>
+                    <td>@prov.NombreProveedor</td>
+                    <td>@prov.DireccionProveedor</td>
+                    <td>@prov.TelefonoProveedor</td>
+                    <td>@prov.DescuentoFijo</td>
+                </tr>
+                
+                                
+            }
+            
+        </tbody>
+    </table>
+
+
+</div>
