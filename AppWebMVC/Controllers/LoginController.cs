@@ -42,5 +42,27 @@ namespace AppWebMVC.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Login");
         }
+
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(string email, string password, string nombre, string apellido, DateTime fechaNac, string documento, TipoDocumento tipoDoc)
+        {
+            if(!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(documento))
+            {
+                AdminHostel.GetInstancia.AltaHuesped(email, password, nombre, apellido, tipoDoc, documento, fechaNac, "NULL", 1);
+                ViewBag.msgExito = "Se registró correctamente";
+                return View();
+
+            }else 
+            {
+                ViewBag.msgError = "Los campos no pueden estas vacios";
+                return View(); 
+            }
+        }
     }
 }

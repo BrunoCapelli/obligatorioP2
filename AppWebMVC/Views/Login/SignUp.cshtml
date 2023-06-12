@@ -1,0 +1,42 @@
+﻿@using LogicaDeNegocio
+
+<div>
+    <h2>Registrarse en el sitio</h2>
+    <form method="post">
+
+        <label>Nombre</label> <br />
+        <input type="text" name="nombre" placeholder="Ignacio" /> <br /> <br />
+
+        <label>Apellido</label> <br />
+        <input type="text" name="apellido" placeholder="Diaz" /> <br /> <br />
+
+        <label>E-mail</label> <br />
+        <input type="text" name="email" /> <br /> <br />
+
+        <label>Contraseña</label> <br />
+        <input type="password" name="password" /> <br /> <br />
+
+        <label>Fecha nacimiento</label> <br />
+        <input type="date" name="fechaNac" placeholder="Diaz" /> <br /> <br />
+
+        <label>Nro Documento</label> <br />
+        <input type="text" name="documento" placeholder="1.010.132-2" /> <br /> <br />
+
+        <label>Tipo de documento</label> <br />
+        <select name="tipoDoc">
+            <option selected value="@TipoDocumento.CI">Cedula de identidad</option>
+            <option value="@TipoDocumento.PASAPORTE">Pasaporte</option>
+            <option value="@TipoDocumento.OTROS">Otro documento</option>
+        </select> <br /> <br />
+        
+
+        <input type="submit" /> <br /> <br />
+    </form>
+
+    <div>
+        <h5 style="color:mediumseagreen">@ViewBag.msgExito </h5>
+        <h5 style="color:tomato">@ViewBag.msgError </h5>
+    </div>
+
+
+</div>
