@@ -179,17 +179,10 @@ namespace LogicaDeNegocio
 
         }
 
-        public string ListarActividades()
+        public List<Actividad> ListarActividades()
         {
-            string resultado = null;
-            resultado = "Actividades: ";
-            
-            foreach (Actividad act in _actividades)
-            {
-                resultado += act.ToString();
-            }
 
-            return resultado;
+            return _actividades;
         }
 
         public string ListarProveedores()
