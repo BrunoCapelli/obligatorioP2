@@ -52,6 +52,31 @@ namespace LogicaDeNegocio
             return huesped;
         }
 
+        public Usuario BuscarPorEmail(string userEmail)
+        {
+            Usuario huesped = null;
+            Usuario huespedAux = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _usuarios.Count && existe == false)
+            {
+                huespedAux = _usuarios[i];
+                if (huespedAux != null)
+                {
+                    if (huespedAux.Email == userEmail)
+                    {
+                        huesped = huespedAux;
+                        existe = true;
+                    }
+                }
+                i++;
+            }
+
+
+            return huesped;
+        }
+
 
         public Proveedor BuscarProveedor(string nombre) {
             Proveedor prov = null;
@@ -185,19 +210,14 @@ namespace LogicaDeNegocio
             return _actividades;
         }
 
-        public string ListarProveedores()
+        public List<Proveedor> ListarProveedores()
         {
-            ListaProveedoresOrdenada();
-            string resultado = "Proveedores";
-
-            foreach (Proveedor prov in _proveedores)
+            List<Proveedor> listaProv = new List<Proveedor>();
+            foreach(Proveedor p in _proveedores)
             {
-                resultado += $" \n Nombre : {prov.NombreProveedor} " +
-                    $"\n Telefono: {prov.TelefonoProveedor} " +
-                    $"\n Direccion: {prov.DireccionProveedor} " +
-                    $"\n Descuento: {prov.DescuentoFijo}\n";
+                listaProv.Add(p);
             }
-            return resultado;
+            return listaProv;
         }
 
         public void AltaHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel)
@@ -277,6 +297,19 @@ namespace LogicaDeNegocio
 
         }
 
+        public List<Agenda> ListarAgendas()
+        {
+            List<Agenda> agendasAux = new List<Agenda>();
+            foreach(Actividad a in _actividades)
+            {
+                foreach(Agenda ag in a.Agendas)
+                {
+                    agendasAux.Add(ag);
+                }
+            }
+            return agendasAux;
+        }
+
         public void precargaDatos()
         {
             // Precarga de Proveedores
@@ -341,6 +374,18 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fecha, out fechaNac);
 
             AltaHuesped("igdiaz@hotmail.com", "brunocapelli", "Ignacio", "Diaz", TipoDocumento.CI, "52722947", fechaNac, "B02", 2);
+
+            DateTime fechaAge = new DateTime();
+            string fecha2 = "25/02/2023";
+            DateTime.TryParse(fecha2, out fechaAge);
+            AltaAgenda("52722947", TipoDocumento.CI, "Fiesta de Disfraces", fechaAge);
+
+            // Precarga de Operador
+
+            
+
+            Usuario userOperador1 = new Usuario("nicoherrera@hostel.com", "nicololo");
+            _usuarios.Add(userOperador1);
 
         }
 

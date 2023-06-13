@@ -1,6 +1,7 @@
-﻿<div>
+﻿@using LogicaDeNegocio
+<div>
     <h2>Login</h2>
-
+    
 </div>
 <div>
     <form method="post">
@@ -10,5 +11,22 @@
         <input type="password" name="password" /><br /><br />
         <input type="submit" />
     </form>
+    <br />
+    <p style="color:red">
+        @ViewBag.DatosErroneos
+    </p>
+        
+
+
+
 
 </div>
+
+@if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")) == null)
+{
+    <script>
+
+        document.querySelector("#navbar").insertAdjacentHTML('beforeend', ` <li class="nav-item"> <a class="nav-link text-dark" href="Login/SignUp">Registrarse</a> </li>`);
+
+    </script>
+}

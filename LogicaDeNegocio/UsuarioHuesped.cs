@@ -144,6 +144,10 @@ namespace LogicaDeNegocio
             return edad;
         }
 
+        public override string VerificarRol()
+        {
+            return "Huesped";
+        }
 
         #endregion
     }

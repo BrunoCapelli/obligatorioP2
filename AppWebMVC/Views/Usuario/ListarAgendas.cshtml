@@ -1,0 +1,34 @@
+﻿@using LogicaDeNegocio
+
+<div>
+    <h2>Lista de agendas</h2>
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre del Huesped</th>
+                <th scope="col">Actividad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Costo final</th>
+                <th scope="col">Proveedor </th
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach(Agenda ag in AdminHostel.GetInstancia.ListarAgendas())
+                {
+                <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
+                <th>ag.Actividad</th>
+                <td>@ag.FechaCreacionAgenda</td>
+                <td>ag.Lugar</td>
+                <td>@ag.CostoFinal</td>
+                <td>@ag. </td>
+                                
+                }
+            </tr>
+            
+        </tbody>
+    </table>
+   
+</div>

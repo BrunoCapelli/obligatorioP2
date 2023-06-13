@@ -56,6 +56,10 @@ namespace LogicaDeNegocio
                 throw;
             }
         }
+        public virtual string VerificarRol()
+        {
+            return "Operador";
+        }
         #endregion
     }
 
