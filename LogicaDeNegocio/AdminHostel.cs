@@ -131,6 +131,23 @@ namespace LogicaDeNegocio
 
         }
 
+        public Actividad BuscarActividad(int id) { //busco la actividad para validar cuando hago el alta
+            Actividad act = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+                if (_actividades[i].Id == id) {
+                    existe = true;
+                    act = _actividades[i];
+                }
+                i++;
+            }
+
+            return act;
+
+        }
+
         //revisar si la validacion de existencia es correcta
 
         public void AltaActividadPropia(string nombre, string descripcion, string fechaIn, int cantMaxPer, int edadMinima, decimal costo, string responsable, string lugar, bool exterior)
