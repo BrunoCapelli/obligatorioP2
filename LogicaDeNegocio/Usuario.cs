@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Usuario: IValidate
+    public abstract class  Usuario: IValidate
     {
+        
+        private string _nombre;
+        private string _apellido; 
         private string _email;
         private string _password;
 
         #region Propiedades
+        public string Nombre
+        {
+            get { return _nombre; }
+            set { _nombre = value; }
+        }
+
+        public string Apellido
+        {
+            get { return _apellido; }
+            set { _apellido = value; }
+        }
         public string Email
             {
                 get { return _email; }
@@ -26,9 +40,10 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        public Usuario(string Email, string Password)
+        public Usuario(string Email, string Password, string Nombre, string Apellido)
         {
-            //Usuario user = new Usuario(Email, Password);
+            _nombre = Nombre;
+            _apellido = Apellido;
             _email = Email;
             _password = Password;
         }
@@ -56,10 +71,8 @@ namespace LogicaDeNegocio
                 throw;
             }
         }
-        public virtual string VerificarRol()
-        {
-            return "Operador";
-        }
+        public abstract string VerificarRol();
+       
         #endregion
     }
 

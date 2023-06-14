@@ -12,8 +12,6 @@ namespace LogicaDeNegocio
     public class UsuarioHuesped : Usuario, IValidate {
         private TipoDocumento _tipoDoc;
         private string _nroDocumento;
-        private string _nombre;
-        private string _apellido;
         private string _habitacion;
         private DateTime _fechaNacimiento;
         private int _nivel;
@@ -28,21 +26,10 @@ namespace LogicaDeNegocio
         public string NroDocumento
         {
             get { return _nroDocumento; }
-            set { _nombre = value; }
+            set { _nroDocumento = value; }
         }
 
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value; }
-        }
-
-        public string Apellido
-        {
-            get { return _apellido; }
-            set { _apellido = value; }
-        }
-
+       
         public string Habitacion
         {
             get { return _habitacion; }
@@ -62,10 +49,8 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        public UsuarioHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel): base(Email, Password)
+        public UsuarioHuesped(string Email, string Password, string Nombre, string Apellido, TipoDocumento tipoDoc, string NroDocumento, DateTime FechaNacimiento, string Habitacion, int Nivel): base(Email, Password, Nombre, Apellido)
         {
-            _nombre = Nombre;
-            _apellido = Apellido;
             _tipoDoc = tipoDoc;
             _nroDocumento = NroDocumento;
             _fechaNacimiento = FechaNacimiento;

@@ -399,9 +399,11 @@ namespace LogicaDeNegocio
 
             // Precarga de Operador
 
-            
 
-            Usuario userOperador1 = new Usuario("nicoherrera@hostel.com", "nicololo");
+            DateTime fechaAlta = new DateTime();
+            string fechaAltaFinal = "17/05/2020";
+            DateTime.TryParse(fechaAltaFinal, out fechaAlta);
+            UsuarioOperador userOperador1 = new UsuarioOperador("nicoherrera@hostel.com", "nicololo","Nico", "Herrera", fechaAlta);
             _usuarios.Add(userOperador1);
 
         }
