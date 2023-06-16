@@ -15,18 +15,21 @@
             </tr>
         </thead>
         <tbody>
+            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividades())
+            {
             <tr>
-                @foreach(Agenda ag in AdminHostel.GetInstancia.ListarAgendas())
+                @foreach(Agenda ag in ac.Agendas)
                 {
                 <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
-                <th>ag.Actividad</th>
+                <th>@ac.Nombre</th>
                 <td>@ag.FechaCreacionAgenda</td>
-                <td>ag.Lugar</td>
+                <td>@ag.</td>
                 <td>@ag.CostoFinal</td>
-                <td>@ag. </td>
-                                
+                <td>@ag. </td>                                
                 }
             </tr>
+                
+            }
             
         </tbody>
     </table>

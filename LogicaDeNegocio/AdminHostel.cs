@@ -204,17 +204,17 @@ namespace LogicaDeNegocio
 
         }
 
-        public string ListarActividades()
+        public List<Actividad> ListarActividades()
         {
-            string resultado = null;
-            resultado = "Actividades: ";
+            List<Actividad> acts = new List<Actividad>();
+            
             
             foreach (Actividad act in _actividades)
             {
-                resultado += act.ToString();
+                acts.Add(act);
             }
 
-            return resultado;
+            return acts;
         }
 
         public List<Proveedor> ListarProveedores()
