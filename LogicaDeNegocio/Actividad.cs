@@ -73,7 +73,7 @@ namespace LogicaDeNegocio
         }
 
 
-        public abstract string AgregarAgenda(UsuarioHuesped huesped);
+        public abstract void AgregarAgenda(UsuarioHuesped huesped);
 
         public int CompareTo(Actividad act)
         {

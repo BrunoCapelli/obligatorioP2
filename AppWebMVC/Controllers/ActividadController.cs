@@ -24,13 +24,15 @@ namespace AppWebMVC.Controllers
                 AdminHostel adm = AdminHostel.GetInstancia;
                 Actividad act = adm.BuscarActividad(id);
                 if (act != null) {
-                    UsuarioHuesped uh = adm.BuscarPorEmail(email);
+                    UsuarioHuesped uh = adm.BuscarHuespedPorEmail(email);
                     if (uh != null) {
                         try {
                             adm.AltaAgenda(uh.NroDocumento, uh.TipoDoc, act.Nombre, act.Fecha);
-
+                            RedirectToAction("ListarAgendas","Usuario");
+                            //redirecciono a mostrar todas las agendas
                         } catch (Exception e) {
                             ViewBag.mensaje = e.Message;
+                            //aca veo a donde voy
                         }
                     } else {
                         ViewBag.mensaje = "El usuario no existe "; // no deberia tirar este mensaje nunca pero la profe dijo que valide
@@ -54,6 +56,7 @@ namespace AppWebMVC.Controllers
         //aca el usuario huesped va a confirmar las agendas no confirmadas para cada actividad
             return View(); 
         }
+
 
     }
 }
