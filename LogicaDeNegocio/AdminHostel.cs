@@ -206,15 +206,8 @@ namespace LogicaDeNegocio
 
         public List<Actividad> ListarActividades()
         {
-            List<Actividad> acts = new List<Actividad>();
-            
-            
-            foreach (Actividad act in _actividades)
-            {
-                acts.Add(act);
-            }
 
-            return acts;
+            return _actividades;
         }
 
         public List<Proveedor> ListarProveedores()

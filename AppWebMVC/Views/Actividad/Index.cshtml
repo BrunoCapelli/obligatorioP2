@@ -1,5 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using LogicaDeNegocio
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Actividades</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Actividades</h1>
+
+    <form method="get">
+        <label for="fecha"></label>
+        <input name="fecha" type="date" value="@ViewBag.fecha.ToString("yyyy-MM-dd")" />
+        <input value="Buscar" type="submit"  />
+    </form>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Cantidad Máxima de Personas</th>
+                <th scope="col">Edad Mínima</th>
+                <th scope="col">Costo Final</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Actividad a in AdminHostel.GetInstancia.ListarActividades()) {
+                @if (ViewBag.fecha.ToString("d") == a.Fecha.ToString("d")) {
+                    <tr>
+                        <th scope="row">@a.Id</th>
+                        <td>@a.Nombre</td>
+                        <td>@a.Descripcion</td>
+                        <td>@a.Fecha.ToShortDateString()</td>
+                        <td>@a.CantidadMaxPersonas</td>
+                        <td>@a.EdadMinina años</td>
+                        <td>$@a.Costo</td>
+                        <td><a href="">Agendarse</a></td>
+                    </tr>
+                }
+            }
+            
+        </tbody>
+    </table>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
