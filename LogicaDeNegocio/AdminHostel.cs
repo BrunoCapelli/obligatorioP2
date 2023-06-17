@@ -360,7 +360,7 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Karaoke night", "Diviértete cantando tus canciones favoritas en el bar del hotel", "14/06/2023", 50, 18, 5, "Alonso & Umpierrez", false, "19/06/2023");
 
             AltaActividadTerciarizada("Sesión de masajes", "Relájate con una sesión de masajes en el spa del hotel", "25/07/2023", 10, 18, 50, "Electric Blue", true, "30/07/2023");
-            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 3, "Electric Blue", false, "15/08/2023");
+            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 3, "Electric Blue", true, "15/08/2023");
             AltaActividadTerciarizada("Safari fotográfico", "Explora la fauna y flora de la región en un safari fotográfico", "20/09/2023", 12, 16, 80, "Electric Blue", true, "25/09/2023");
 
 
@@ -379,6 +379,15 @@ namespace LogicaDeNegocio
             string fecha2 = "25/02/2023";
             DateTime.TryParse(fecha2, out fechaAge);
             AltaAgenda("52722947", TipoDocumento.CI, "Fiesta de Disfraces", fechaAge);
+
+            DateTime fechaAge2 = new DateTime();
+            string fecha22 = "10/08/2023";
+            DateTime.TryParse(fecha22, out fechaAge2);
+            AltaAgenda("52722947", TipoDocumento.CI, "Torneo de ping pong", fechaAge2);
+
+
+            
+
 
             // Precarga de Operador
 

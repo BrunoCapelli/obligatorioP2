@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Agenda//: IValidate
+    public class Agenda: IComparable<Agenda> //IValidate
     {
         private UsuarioHuesped _huesped;
         private EstadoAgenda _estadoAgenda;
@@ -27,6 +27,12 @@ namespace LogicaDeNegocio
             _fechaCreacionAgenda= DateTime.Now;
             _costoFinal = costoFinal;
         }
+
+        public int CompareTo(Agenda ag)
+        {
+            return _fechaCreacionAgenda.CompareTo(ag.FechaCreacionAgenda);
+        }
+
 
         #endregion
 

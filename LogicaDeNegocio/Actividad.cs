@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public abstract class Actividad: IValidate, IComparable<Actividad>
+    public abstract class Actividad: IComparable<Actividad>, IValidate
     {
         private int _id;
         private string _nombre;
@@ -103,6 +103,21 @@ namespace LogicaDeNegocio
             string proveedor = null;
             return proveedor;
         }
+
+        public List<Agenda> ListarAgendasOrdenadasPorFecha()
+        {
+            _agendas.Sort();
+            return _agendas;
+        }
+
+        public abstract string TipoActividad();
+
+        public virtual string GetLugar()
+        {
+            return "A definir";
+        }
+
+        
         #endregion
 
 

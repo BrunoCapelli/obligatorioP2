@@ -98,6 +98,16 @@ namespace LogicaDeNegocio {
             }
             return costoFinal;
         }
+
+        public override string TipoActividad()
+        {
+            return "Propia";
+        }
+
+        public override string GetLugar()
+        {
+            return _lugar;
+        }
         #endregion
     }
 }
