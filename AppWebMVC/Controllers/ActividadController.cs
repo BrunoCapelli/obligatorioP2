@@ -9,7 +9,6 @@ namespace AppWebMVC.Controllers
         {
             ViewBag.Fecha = fecha;
             if (!(fecha > DateTime.MinValue)) {
-                ViewBag.Mensaje = "Error de fecha";
                 ViewBag.Fecha = DateTime.Now;
             }
             
@@ -28,11 +27,12 @@ namespace AppWebMVC.Controllers
                     if (uh != null) {
                         try {
                             adm.AltaAgenda(uh.NroDocumento, uh.TipoDoc, act.Nombre, act.Fecha);
-                            RedirectToAction("ListarAgendas","Usuario");
+                            return RedirectToAction("ListarAgendas", "Usuario");
                             //redirecciono a mostrar todas las agendas
                         } catch (Exception e) {
                             ViewBag.mensaje = e.Message;
-                            //aca veo a donde voy
+                            ViewBag.Fecha = act.Fecha;
+                            return View("Index");
                         }
                     } else {
                         ViewBag.mensaje = "El usuario no existe "; // no deberia tirar este mensaje nunca pero la profe dijo que valide

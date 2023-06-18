@@ -32,6 +32,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Listar Actividades</a>
+                        </li>
                         
                         @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")) != null)
                         {
@@ -52,9 +56,6 @@
                             </li>
                         }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Listar Actividades</a>
-                        </li>
                     </ul>
                 </div>
             </div>

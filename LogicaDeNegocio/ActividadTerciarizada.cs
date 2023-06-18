@@ -51,15 +51,20 @@ namespace LogicaDeNegocio {
                     estadoAgenda = EstadoAgenda.PENDIENTE_PAGO;
 
                 }
-               
 
-                if (hayCupos())
-                {
-                    Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
-                    this._agendas.Add(agenda);
+
+                if (hayCupos()) {
+                    if (!HuespedEnAgenda(huesped)) {
+                        Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
+                        this._agendas.Add(agenda);
+
+                    }
+                    else {
+                        throw new Exception("El usuario ya posee una agenda para esta actividad");
+                    }
+
                 }
-                else
-                {
+                else {
                     throw new Exception("No hay cupos disponibles");
                 }
 

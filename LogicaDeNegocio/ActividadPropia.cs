@@ -57,8 +57,14 @@ namespace LogicaDeNegocio {
 
             if (hayCupos())
             {
+                if (!HuespedEnAgenda(huesped))
+                {
                 Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
                 this._agendas.Add(agenda);
+
+                } else {
+                    throw new Exception("El usuario ya posee una agenda para esta actividad");
+                }
 
             }
             else
