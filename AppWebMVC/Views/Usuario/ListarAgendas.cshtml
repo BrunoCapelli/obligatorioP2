@@ -16,10 +16,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividades())
+            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
             {
             <tr>
-                @foreach(Agenda ag in ac.ListarAgendasOrdenadasPorFecha())
+                @foreach(Agenda ag in ac.Agendas)
                 {
                     
                 <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>

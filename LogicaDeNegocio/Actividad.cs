@@ -77,7 +77,7 @@ namespace LogicaDeNegocio
 
         public int CompareTo(Actividad act)
         {
-            return _costoFinal.CompareTo(act._costoFinal);
+            return _fecha.CompareTo(act.Fecha)*-1;
         }
 
         public bool hayCupos()
@@ -104,11 +104,6 @@ namespace LogicaDeNegocio
             return proveedor;
         }
 
-        public List<Agenda> ListarAgendasOrdenadasPorFecha()
-        {
-            _agendas.Sort();
-            return _agendas;
-        }
 
         public abstract string TipoActividad();
 

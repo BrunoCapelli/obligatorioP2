@@ -205,8 +205,13 @@ namespace LogicaDeNegocio
         }
 
         public List<Actividad> ListarActividades()
-        {
+        { 
+            return _actividades;
+        }
 
+        public List<Actividad> ListarActividadesPorFecha()
+        {
+            _actividades.Sort();
             return _actividades;
         }
 
@@ -243,6 +248,7 @@ namespace LogicaDeNegocio
             _proveedores.Sort();
             return _proveedores;
         }
+
 
         public void EstablecerDescuento(string nombreProveedor, int descuento)
         {
