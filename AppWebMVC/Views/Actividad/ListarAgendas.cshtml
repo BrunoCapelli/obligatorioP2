@@ -30,10 +30,15 @@
                     {
                         <td>@ac.GetLugar()</td> 
                     }else{
-                        <td>Sin definir</td>
+                            <td>Sin definir</td>
                     }
 
-                <th>@ag.CostoFinal</th>
+                    if (ag.CostoFinal > 0)
+                    {
+                        <td>@ag.CostoFinal</td>
+                    }else{
+                        <td>Actividad gratuita</td>
+                    }
 
                     if(ac.TipoActividad() == "Terciarizada")
                     {

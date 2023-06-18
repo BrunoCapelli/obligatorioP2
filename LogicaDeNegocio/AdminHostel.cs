@@ -359,7 +359,7 @@ namespace LogicaDeNegocio
             AltaActividadPropia("Arte y Pintura", "Clase de pintura para principiantes", "10/10/2023", 15, 12, 20, "Sofía Gómez", "Terraza del hotel", true);
             AltaActividadPropia("Cantando con Amigos", "Noche de karaoke", "20/11/2023", 30, 18, 10, "Juan García", "Bar del hotel", false);
             AltaActividadPropia("Sabores del Mundo", "Clase de cocina", "15/01/2023", 12, 16, 30, "Ana López", "Cocina del hotel", false);
-            AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 25, "María García", "Patio de eventos", true);
+            AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 0, "María García", "Patio de eventos", true);
             AltaActividadPropia("Gimnasia Acuática", "Gimnasia acuática en la piscina", "20/05/2023", 15, 16, 5, "José Martínez", "Piscina del hotel", true);
             AltaActividadPropia("Tour Histórico", "Tour guiado por los lugares históricos más importantes de la ciudad", "05/03/2023", 20, 16, 25, "Alejandro Gómez", "Recepción del hotel", false);
 
@@ -386,7 +386,7 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Karaoke night", "Diviértete cantando tus canciones favoritas en el bar del hotel", "14/06/2023", 50, 18, 5, "Alonso & Umpierrez", false, "19/06/2023");
 
             AltaActividadTerciarizada("Sesión de masajes", "Relájate con una sesión de masajes en el spa del hotel", "25/07/2023", 10, 18, 50, "Electric Blue", true, "30/07/2023");
-            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 3, "Electric Blue", true, "15/08/2023");
+            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 25, "Electric Blue", true, "15/08/2023");
             AltaActividadTerciarizada("Safari fotográfico", "Explora la fauna y flora de la región en un safari fotográfico", "20/09/2023", 12, 16, 80, "Electric Blue", true, "25/09/2023");
 
 
