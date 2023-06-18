@@ -17,7 +17,15 @@ namespace AppWebMVC.Controllers
         [HttpPost]
         public IActionResult EstablecerPromocion(string nombreProveedor,int valorPromocion)
         {
-            AdminHostel.GetInstancia.BuscarProveedor(nombreProveedor).DescuentoFijo = valorPromocion;
+            if(nombreProveedor == null)
+            {
+                AdminHostel.GetInstancia.BuscarProveedor(nombreProveedor).DescuentoFijo = valorPromocion;
+
+            }
+            else
+            {
+                ViewBag.Error = "No se encontro el proveedor";
+            }
             return RedirectToAction("ListarProveedores");
         }
     }

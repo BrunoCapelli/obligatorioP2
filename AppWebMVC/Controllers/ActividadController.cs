@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LogicaDeNegocio;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AppWebMVC.Controllers
 {
@@ -18,6 +19,24 @@ namespace AppWebMVC.Controllers
 
         public IActionResult Agendar() {
             return View();
+        }
+
+        public IActionResult ListarAgendas()
+        {
+
+            return View();
+        }
+        public IActionResult ListarAgendasPendientes()
+        {
+            return View();
+        }
+        public IActionResult ConfirmarAgenda(string nomAc, DateTime fecAc)
+        {          
+            
+               Agenda ag = AdminHostel.GetInstancia.BuscarAgenda(nomAc, fecAc);
+               ag.EstadoAgenda = EstadoAgenda.CONFIRMADA;
+            
+            return RedirectToAction("ListarAgendasPendientes");
         }
     }
 }

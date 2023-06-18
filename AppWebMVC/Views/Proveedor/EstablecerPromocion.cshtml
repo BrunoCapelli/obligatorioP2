@@ -4,7 +4,14 @@
         <input type="hidden" value="@ViewBag.nombreProv" name="nombreProveedor" /> <br /> <br />
         <label>Valor de promocion</label> <br />
         <input name="valorPromocion" /><br /><br />
-        <input type="submit" />
+        @if(ViewBag.nombreProv!= null)
+        {
+            <input type="submit" />
+        }
+        else
+        {
+            <input type="submit" disabled />
+        }
 
     </form>
 </div>

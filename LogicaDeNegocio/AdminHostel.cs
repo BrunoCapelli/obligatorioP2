@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LogicaDeNegocio
 {
@@ -54,19 +55,19 @@ namespace LogicaDeNegocio
 
         public Usuario BuscarPorEmail(string userEmail)
         {
-            Usuario huesped = null;
-            Usuario huespedAux = null;
+            Usuario user = null;
+            Usuario userAux = null;
             bool existe = false;
             int i = 0;
 
             while (i < _usuarios.Count && existe == false)
             {
-                huespedAux = _usuarios[i];
-                if (huespedAux != null)
+                userAux = _usuarios[i];
+                if (userAux != null)
                 {
-                    if (huespedAux.Email == userEmail)
+                    if (userAux.Email == userEmail)
                     {
-                        huesped = huespedAux;
+                        user = userAux;
                         existe = true;
                     }
                 }
@@ -74,7 +75,7 @@ namespace LogicaDeNegocio
             }
 
 
-            return huesped;
+            return user;
         }
 
 
@@ -92,6 +93,25 @@ namespace LogicaDeNegocio
             }
 
             return prov;
+        }
+
+        public Agenda BuscarAgenda(string nombreActividad, DateTime fechaActividad)
+        {
+            Agenda agenda = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _actividades.Count)
+            { 
+                if (_actividades[i].Nombre.ToUpper() == nombreActividad.ToUpper() && _actividades[i].Fecha == fechaActividad)
+                { 
+                    agenda = _actividades[i].Agendas[0];
+                    existe = true;
+                }
+                i++;
+            }
+
+            return agenda;
         }
 
         public void AltaProveedor(string nombre, string telefonoProveedor, string direccionProveedor, int descuentoFijo)
