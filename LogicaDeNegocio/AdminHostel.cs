@@ -250,16 +250,6 @@ namespace LogicaDeNegocio
             return _actividades;
         }
 
-        public List<Actividad> ListarActividadesConAgendasSinConf() {
-            List<Actividad> res = new List<Actividad>();
-            foreach (Actividad act in _actividades) {
-                if (act.tieneAgendasSinConfirmar()) {
-                    res.Add(act);
-                }
-            }
-            return res;
-        }
-
         public List<Proveedor> ListarProveedores()
         {
             List<Proveedor> listaProv = new List<Proveedor>();

@@ -35,7 +35,7 @@ namespace AppWebMVC.Controllers
                             return View("Index");
                         }
                     } else {
-                        ViewBag.mensaje = "El usuario no existe "; // no deberia tirar este mensaje nunca pero la profe dijo que valide
+                        ViewBag.mensaje = "El usuario no es de tipo huesped "; // no deberia tirar este mensaje nunca pero la profe dijo que valide
                     }
                 } else {
                     ViewBag.mensaje = "La actividad no existe "; // no deberia tirar este mensaje nunca pero la profe dijo que valide
@@ -50,13 +50,7 @@ namespace AppWebMVC.Controllers
             
         }
 
-        [HttpGet]
-
-        public IActionResult AdmnistrarAgendas() { 
-        //aca el usuario huesped va a confirmar las agendas no confirmadas para cada actividad
-            return View(); 
-        }
-
+    
 
     }
 }
