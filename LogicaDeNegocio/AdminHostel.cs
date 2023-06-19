@@ -400,6 +400,10 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fecha, out fechaNac);
 
             AltaHuesped("igdiaz@hotmail.com", "brunocapelli", "Ignacio", "Diaz", TipoDocumento.CI, "52722947", fechaNac, "B02", 2);
+            AltaHuesped("jherrera@internet.com", "jherrera", "Jose", "Herrera", TipoDocumento.CI, "19122605", fechaNac, "B03", 3);
+            AltaHuesped("jlopez@internet.com", "jlopez1234", "Jorge", "Lopez", TipoDocumento.PASAPORTE, "512260", fechaNac, "B04", 1);
+
+            // Precarga Agendas
 
             DateTime fechaAge = new DateTime();
             string fecha2 = "25/02/2023";
@@ -412,7 +416,15 @@ namespace LogicaDeNegocio
             AltaAgenda("52722947", TipoDocumento.CI, "Torneo de ping pong", fechaAge2);
 
 
-            
+            string fechaAgenda = "01/11/2023";
+            DateTime.TryParse(fechaAgenda, out DateTime FechaAgendaP);
+            AltaAgenda("52722947", TipoDocumento.CI, "Yoga", FechaAgendaP);
+
+            string fechaAgenda2 = "25/02/2023";
+            DateTime.TryParse(fechaAgenda2, out DateTime fechaAgendaP2);
+            AltaAgenda("19122605", TipoDocumento.CI, "Fiesta de Disfraces", fechaAgendaP2);
+
+
 
 
             // Precarga de Operador
@@ -423,6 +435,7 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fechaAltaFinal, out fechaAlta);
             UsuarioOperador userOperador1 = new UsuarioOperador("nicoherrera@hostel.com", "nicololo","Nico", "Herrera", fechaAlta);
             _usuarios.Add(userOperador1);
+
 
         }
 

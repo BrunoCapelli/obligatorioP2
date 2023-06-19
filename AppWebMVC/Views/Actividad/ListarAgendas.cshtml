@@ -1,8 +1,6 @@
 ﻿@using LogicaDeNegocio
 
-<div>
-    <h2>Lista de agendas</h2>
-    
+   
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -16,43 +14,45 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
-            {
+            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha()){
             <tr>
-                @foreach(Agenda ag in ac.Agendas)
-                {
-                    
-                <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
-                <td>@ac.Nombre</td>
-                <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
-
-                    if(ac.TipoActividad() == "Propia" )
+                @foreach(Agenda ag in ac.Agendas){
+                    if (ag.Huesped.Email == @ViewBag.Email)
                     {
-                        <td>@ac.GetLugar()</td> 
-                    }else{
-                            <td>Sin definir</td>
-                    }
 
-                    if (ag.CostoFinal > 0)
-                    {
-                        <td>@ag.CostoFinal</td>
-                    }else{
-                        <td>Actividad gratuita</td>
-                    }
+                        <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
+                        <td>@ac.Nombre</td>
+                        <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
 
-                    if(ac.TipoActividad() == "Terciarizada")
-                    {
-                        <td>@ac.GetProveedor() </td>                                
-                    }else{
-                        <td> </td> // Solo por motivo estetico =)
+                            if(ac.TipoActividad() == "Propia" )
+                            {
+                                <td>@ac.GetLugar()</td> 
+                            }else{
+                                    <td>Sin definir</td>
+                            }
+
+                            if (ag.CostoFinal > 0)
+                            {
+                                <td>@ag.CostoFinal</td>
+                            }else{
+                                <td>Actividad gratuita</td>
+                            }
+
+                            if(ac.TipoActividad() == "Terciarizada"){<td>@ac.GetProveedor() </td>                          
+                            }
+                            else{<td> </td>  // Solo por motivo estetico =)
+                                }
+                                <td>@ag.EstadoAgenda</td>
+                            
+                            
                     }
-                
-                <td>@ag.EstadoAgenda</td>
                 }
             </tr>
                 
             }
+            <tr>
             
+            </tr>
         </tbody>
     </table>
    

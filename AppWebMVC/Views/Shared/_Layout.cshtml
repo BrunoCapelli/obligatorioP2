@@ -39,7 +39,7 @@
                                 <a class="nav-link text-dark" asp-controller="Usuario" asp-action="DatosPersonales">Datos Personales</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Actividad" asp-action="ListarAgendas">Ver agendas</a>
+                                <a class="nav-link text-dark" asp-controller="Actividad" asp-action="BuscarAgendaPorHuesped">Ver agendas</a>
                             </li>
                             @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Operador")
                             {

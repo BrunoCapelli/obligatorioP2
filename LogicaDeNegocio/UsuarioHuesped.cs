@@ -111,8 +111,10 @@ namespace LogicaDeNegocio
                 }
                 else
                 {
-                    throw new Exception("El documento ingresado no es valido.");
-
+                    if (_tipoDoc == TipoDocumento.CI)
+                    {
+                        throw new Exception("El documento ingresado no es valido.");
+                    }
                 }
             }
             catch

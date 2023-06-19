@@ -21,9 +21,22 @@ namespace AppWebMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult BuscarAgendaPorHuesped()
+        {
+            return  View();
+        }
+
+        [HttpPost]
+        public IActionResult BuscarAgendaPorHuesped(string docHuesped, TipoDocumento tipoDocumento)
+        {
+            UsuarioHuesped userH = AdminHostel.GetInstancia.BuscarHuesped(docHuesped, tipoDocumento);
+            @ViewBag.Email = userH.Email;
+            return View("ListarAgendas");
+        }
+
         public IActionResult ListarAgendas()
         {
-
             return View();
         }
         public IActionResult ListarAgendasPendientes()
