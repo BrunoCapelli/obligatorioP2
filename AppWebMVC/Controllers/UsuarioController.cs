@@ -9,7 +9,9 @@ namespace AppWebMVC.Controllers
 
         public IActionResult DatosPersonales()
         {
-            ViewBag.Usuario = AdminHostel.GetInstancia.BuscarPorEmail(HttpContext.Session.GetString("email"));
+            Usuario user = AdminHostel.GetInstancia.BuscarPorEmail(HttpContext.Session.GetString("email"));
+            ViewBag.Usuario = user;
+            ViewBag.userRol = user.VerificarRol();
             return View();
         }
 

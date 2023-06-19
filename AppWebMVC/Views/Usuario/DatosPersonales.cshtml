@@ -1,16 +1,17 @@
 ﻿@using LogicaDeNegocio
 
 <div>
-    @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Operador")
+    
+    @if (ViewBag.userRol == "Operador")
     {
         <h2>Datos personales</h2> <br /> <br />
 
         <p>Nombre: @ViewBag.Usuario.Nombre </p>
         <p>Apellido: @ViewBag.Usuario.Apellido </p>
-        <p>Fecha: @ViewBag.Usuario.ToString()</p>
+        <p>Fecha: @ViewBag.Usuario.FechaAlta.ToString("dd/MM/yyyy")</p>
         // esta roto esto
     }
-    @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Huesped")
+    @if (ViewBag.userRol == "Huesped")
     {
         <h2>Datos personales</h2> <br /> <br />
     

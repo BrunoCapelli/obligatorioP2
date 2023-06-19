@@ -7,7 +7,7 @@ using LogicaDeNegocio;
 
 namespace LogicaDeNegocio
 {
-    internal class UsuarioOperador: Usuario, IValidate
+    public class UsuarioOperador: Usuario, IValidate
     { 
         private DateTime _fechaAlta;
 
