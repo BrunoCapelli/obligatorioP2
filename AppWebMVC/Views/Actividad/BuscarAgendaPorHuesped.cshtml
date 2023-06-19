@@ -1,0 +1,32 @@
+﻿@using LogicaDeNegocio
+
+<div>
+    <h2>Lista de agendas</h2>
+    <div>
+        <form method="post" >
+            <label for="docHuesped">Seleccione un huesped</label>
+            <input type="text" name="docHuesped" />
+            <select name="tipoDocumento">
+                <option value="@TipoDocumento.CI" selected>CI</option>
+                <option value="@TipoDocumento.PASAPORTE">Pasaporte</option>
+                <option value="@TipoDocumento.OTROS">Otro</option>
+            </select>
+            <input type="submit" />
+
+        </form>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre del Huesped</th>
+                <th scope="col">Actividad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Costo final</th>
+                <th scope="col">Proveedor </th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+    </table>
+</div>

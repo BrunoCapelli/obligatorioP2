@@ -78,6 +78,11 @@ namespace LogicaDeNegocio {
         {
             return _proveedor.NombreProveedor;
         }
+
+        public override string TipoActividad()
+        {
+            return "Terciarizada";
+        }
         #endregion
     }
 }

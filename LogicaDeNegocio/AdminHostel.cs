@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LogicaDeNegocio
 {
@@ -54,19 +55,19 @@ namespace LogicaDeNegocio
 
         public Usuario BuscarPorEmail(string userEmail)
         {
-            Usuario huesped = null;
-            Usuario huespedAux = null;
+            Usuario user = null;
+            Usuario userAux = null;
             bool existe = false;
             int i = 0;
 
             while (i < _usuarios.Count && existe == false)
             {
-                huespedAux = _usuarios[i];
-                if (huespedAux != null)
+                userAux = _usuarios[i];
+                if (userAux != null)
                 {
-                    if (huespedAux.Email == userEmail)
+                    if (userAux.Email == userEmail)
                     {
-                        huesped = huespedAux;
+                        user = userAux;
                         existe = true;
                     }
                 }
@@ -74,7 +75,7 @@ namespace LogicaDeNegocio
             }
 
 
-            return huesped;
+            return user;
         }
 
         public UsuarioHuesped BuscarHuespedPorEmail(string userEmail) {
@@ -112,6 +113,25 @@ namespace LogicaDeNegocio
             }
 
             return prov;
+        }
+
+        public Agenda BuscarAgenda(string nombreActividad, DateTime fechaActividad)
+        {
+            Agenda agenda = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _actividades.Count)
+            { 
+                if (_actividades[i].Nombre.ToUpper() == nombreActividad.ToUpper() && _actividades[i].Fecha == fechaActividad)
+                { 
+                    agenda = _actividades[i].Agendas[0];
+                    existe = true;
+                }
+                i++;
+            }
+
+            return agenda;
         }
 
         public void AltaProveedor(string nombre, string telefonoProveedor, string direccionProveedor, int descuentoFijo)
@@ -245,8 +265,13 @@ namespace LogicaDeNegocio
         }
 
         public List<Actividad> ListarActividades()
-        {
+        { 
+            return _actividades;
+        }
 
+        public List<Actividad> ListarActividadesPorFecha()
+        {
+            _actividades.Sort();
             return _actividades;
         }
 
@@ -283,6 +308,7 @@ namespace LogicaDeNegocio
             _proveedores.Sort();
             return _proveedores;
         }
+
 
         public void EstablecerDescuento(string nombreProveedor, int descuento)
         {
@@ -373,7 +399,7 @@ namespace LogicaDeNegocio
             AltaActividadPropia("Arte y Pintura", "Clase de pintura para principiantes", "10/10/2023", 15, 12, 20, "Sofía Gómez", "Terraza del hotel", true);
             AltaActividadPropia("Cantando con Amigos", "Noche de karaoke", "20/11/2023", 30, 18, 10, "Juan García", "Bar del hotel", false);
             AltaActividadPropia("Sabores del Mundo", "Clase de cocina", "15/01/2023", 12, 16, 30, "Ana López", "Cocina del hotel", false);
-            AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 25, "María García", "Patio de eventos", true);
+            AltaActividadPropia("Fiesta de Disfraces", "Fiesta de disfraces con música en vivo", "25/02/2023", 50, 21, 0, "María García", "Patio de eventos", true);
             AltaActividadPropia("Gimnasia Acuática", "Gimnasia acuática en la piscina", "20/05/2023", 15, 16, 5, "José Martínez", "Piscina del hotel", true);
             AltaActividadPropia("Tour Histórico", "Tour guiado por los lugares históricos más importantes de la ciudad", "05/03/2023", 20, 16, 25, "Alejandro Gómez", "Recepción del hotel", false);
 
@@ -400,7 +426,7 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Karaoke night", "Diviértete cantando tus canciones favoritas en el bar del hotel", "14/06/2023", 50, 18, 5, "Alonso & Umpierrez", false, "19/06/2023");
 
             AltaActividadTerciarizada("Sesión de masajes", "Relájate con una sesión de masajes en el spa del hotel", "25/07/2023", 10, 18, 50, "Electric Blue", true, "30/07/2023");
-            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 3, "Electric Blue", false, "15/08/2023");
+            AltaActividadTerciarizada("Torneo de ping pong", "Demuestra tus habilidades en este torneo de ping pong", "10/08/2023", 16, 12, 25, "Electric Blue", true, "15/08/2023");
             AltaActividadTerciarizada("Safari fotográfico", "Explora la fauna y flora de la región en un safari fotográfico", "20/09/2023", 12, 16, 80, "Electric Blue", true, "25/09/2023");
 
 
@@ -414,11 +440,32 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fecha, out fechaNac);
 
             AltaHuesped("igdiaz@hotmail.com", "brunocapelli", "Ignacio", "Diaz", TipoDocumento.CI, "52722947", fechaNac, "B02", 2);
+            AltaHuesped("jherrera@internet.com", "jherrera", "Jose", "Herrera", TipoDocumento.CI, "19122605", fechaNac, "B03", 3);
+            AltaHuesped("jlopez@internet.com", "jlopez1234", "Jorge", "Lopez", TipoDocumento.PASAPORTE, "512260", fechaNac, "B04", 1);
+
+            // Precarga Agendas
 
             DateTime fechaAge = new DateTime();
             string fecha2 = "25/02/2023";
             DateTime.TryParse(fecha2, out fechaAge);
             AltaAgenda("52722947", TipoDocumento.CI, "Fiesta de Disfraces", fechaAge);
+
+            DateTime fechaAge2 = new DateTime();
+            string fecha22 = "10/08/2023";
+            DateTime.TryParse(fecha22, out fechaAge2);
+            AltaAgenda("52722947", TipoDocumento.CI, "Torneo de ping pong", fechaAge2);
+
+
+            string fechaAgenda = "01/11/2023";
+            DateTime.TryParse(fechaAgenda, out DateTime FechaAgendaP);
+            AltaAgenda("52722947", TipoDocumento.CI, "Yoga", FechaAgendaP);
+
+            string fechaAgenda2 = "25/02/2023";
+            DateTime.TryParse(fechaAgenda2, out DateTime fechaAgendaP2);
+            AltaAgenda("19122605", TipoDocumento.CI, "Fiesta de Disfraces", fechaAgendaP2);
+
+
+
 
             // Precarga de Operador
 
@@ -428,6 +475,7 @@ namespace LogicaDeNegocio
             DateTime.TryParse(fechaAltaFinal, out fechaAlta);
             UsuarioOperador userOperador1 = new UsuarioOperador("nicoherrera@hostel.com", "nicololo","Nico", "Herrera", fechaAlta);
             _usuarios.Add(userOperador1);
+
 
         }
 

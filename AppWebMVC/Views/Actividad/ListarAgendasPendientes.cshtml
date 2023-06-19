@@ -1,0 +1,70 @@
+﻿@using LogicaDeNegocio
+
+<div>
+    <h2>Lista de agendas</h2>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre del Huesped</th>
+                <th scope="col">Actividad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Costo final</th>
+                <th scope="col">Proveedor </th>
+                <th scope="col">Estado</th>
+                <th scope="col">Cambiar Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
+            {
+                <tr>
+                    @foreach (Agenda ag in ac.Agendas)
+                    {
+                        if(ag.EstadoAgenda == EstadoAgenda.PENDIENTE_PAGO)
+                        {
+                            <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
+                            <td>@ac.Nombre</td>
+                            <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
+
+                            if (ac.TipoActividad() == "Propia")
+                            {
+                                <td>@ac.GetLugar()</td>
+                            }
+                            else
+                            {
+                                <td>Sin definir</td>
+                            }
+
+                            <th>@ag.CostoFinal</th>
+
+                            if (ac.TipoActividad() == "Terciarizada")
+                            {
+                                <td>@ac.GetProveedor() </td>
+                            }
+                            else
+                            {
+                                <td> </td>
+                                // Solo por motivo estetico =)
+                            }
+
+                            <td>@ag.EstadoAgenda</td>
+                            //<td> <a href="~/Actividad/ConfirmarAgenda?nomAc=@ac.Nombre&fecAc=@ac.Fecha.ToString("dd/MM/yyyy")">Confirmar</a></td>
+                            <td> <form method="post" action="ConfirmarAgenda"> 
+                              <input name="nomAc" value="@ac.Nombre" hidden> 
+                              <input name="fecAc" value="@ac.Fecha" hidden>
+                              <input type="submit" value="Confirmar">
+                              </form> </td>
+                        }
+                        
+                    }
+
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+</div>

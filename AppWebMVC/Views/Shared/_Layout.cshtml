@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AppWebMVC</title>
+    <title>@ViewData["Title"]Hostel</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AppWebMVC.styles.css" asp-append-version="true" />
@@ -29,8 +29,9 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1" id="navbar">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Actividad" asp-action="Index">Listar Actividades</a>
                         </li>
 
                         <li class="nav-item">
@@ -43,13 +44,17 @@
                                 <a class="nav-link text-dark" asp-controller="Usuario" asp-action="DatosPersonales">Datos Personales</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Usuario" asp-action="ListarAgendas">Ver agendas</a>
+                                <a class="nav-link text-dark" asp-controller="Actividad" asp-action="BuscarAgendaPorHuesped">Ver agendas</a>
                             </li>
                             @if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).VerificarRol() == "Operador")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="Proveedor/ListarProveedores">Ver Proveedores</a>
+                                    <a class="nav-link text-dark" asp-controller="Proveedor" asp-action="ListarProveedores">Ver Proveedores</a>
                                 </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Actividad" asp-action="ListarAgendasPendientes">Agendas Pendientes</a>
+                                 </li>
                             }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Log out</a>

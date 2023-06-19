@@ -49,8 +49,17 @@ namespace AppWebMVC.Controllers
             }
             
         }
-
-    
-
+        public IActionResult ListarAgendasPendientes()
+        {
+            return View();
+        }
+        public IActionResult ConfirmarAgenda(string nomAc, DateTime fecAc)
+        {          
+            
+               Agenda ag = AdminHostel.GetInstancia.BuscarAgenda(nomAc, fecAc);
+               ag.EstadoAgenda = EstadoAgenda.CONFIRMADA;
+            
+            return RedirectToAction("ListarAgendasPendientes");
+        }
     }
 }

@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public abstract class Actividad : IValidate, IComparable<Actividad> {
+    public abstract class Actividad: IComparable<Actividad>, IValidate
+    {
         private int _id;
         private string _nombre;
         private string _descripcion;
@@ -111,6 +112,16 @@ namespace LogicaDeNegocio
             string proveedor = null;
             return proveedor;
         }
+
+
+        public abstract string TipoActividad();
+
+        public virtual string GetLugar()
+        {
+            return "A definir";
+        }
+
+        
         #endregion
 
         public bool tieneAgendasSinConfirmar() {
