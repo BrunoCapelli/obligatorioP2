@@ -30,6 +30,12 @@ namespace LogicaDeNegocio
 
         #endregion
 
+        #region Metodos
+        public void Confirmar() {
+            _estadoAgenda = EstadoAgenda.CONFIRMADA;
+        }
+        #endregion
+
     }
 
 

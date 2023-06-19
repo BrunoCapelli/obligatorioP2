@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public abstract class Actividad: IValidate, IComparable<Actividad>
-    {
+    public abstract class Actividad : IValidate, IComparable<Actividad> {
         private int _id;
         private string _nombre;
         private string _descripcion;
@@ -73,21 +72,31 @@ namespace LogicaDeNegocio
         }
 
 
-        public abstract string AgregarAgenda(UsuarioHuesped huesped);
+        public abstract void AgregarAgenda(UsuarioHuesped huesped);
 
-        public int CompareTo(Actividad act)
-        {
+        public int CompareTo(Actividad act) {
             return _costoFinal.CompareTo(act._costoFinal);
         }
 
-        public bool hayCupos()
-        {
+        public bool hayCupos() {
             int resultado = _cantidadMaxPersonas - _agendas.Count;
             return resultado > 0;
         }
 
-        public override string ToString()
-        {
+        public bool HuespedEnAgenda(UsuarioHuesped huesped) {
+            bool esta = false;
+            int i = 0;
+            while (i < _agendas.Count && esta == false) {
+                if (_agendas[i].Huesped == huesped) {
+                    esta = true;
+                }
+                i++;
+            }
+
+            return esta;
+        }
+
+        public override string ToString() {
             string resultado = "";
             resultado += $" ID: {Id}" +
                     $"Nombre: {Nombre}" +
@@ -98,14 +107,23 @@ namespace LogicaDeNegocio
             return resultado;
         }
 
-        public virtual string GetProveedor()
-        {
+        public virtual string GetProveedor() {
             string proveedor = null;
             return proveedor;
         }
         #endregion
 
-
+        public bool tieneAgendasSinConfirmar() {
+            bool res = false;
+            int i = 0;
+            while (i < _agendas.Count && res == false) {
+                if (_agendas[i].EstadoAgenda == EstadoAgenda.PENDIENTE_PAGO) {
+                    res = true;
+                }
+                i++;
+            }
+            return res;
+        }
     }
 
 

@@ -77,6 +77,26 @@ namespace LogicaDeNegocio
             return huesped;
         }
 
+        public UsuarioHuesped BuscarHuespedPorEmail(string userEmail) {
+            UsuarioHuesped huesped = null;
+            Usuario usuario = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _usuarios.Count && existe == false) {
+                usuario = _usuarios[i];
+                if (usuario != null) {
+                    if (usuario.Email == userEmail) {
+                        huesped = usuario as UsuarioHuesped;
+                        existe = true;
+                    }
+                }
+                i++;
+            }
+
+
+            return huesped;
+        }
 
         public Proveedor BuscarProveedor(string nombre) {
             Proveedor prov = null;
@@ -121,6 +141,23 @@ namespace LogicaDeNegocio
 
             while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
                 if (_actividades[i].Nombre == nombre && _actividades[i].Fecha == fecha) {
+                    existe = true;
+                    act = _actividades[i];
+                }
+                i++;
+            }
+
+            return act;
+
+        }
+
+        public Actividad BuscarActividad(int id) { //busco la actividad para validar cuando hago el alta
+            Actividad act = null;
+            bool existe = false;
+            int i = 0;
+
+            while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+                if (_actividades[i].Id == id) {
                     existe = true;
                     act = _actividades[i];
                 }
@@ -192,16 +229,19 @@ namespace LogicaDeNegocio
 
         public void AltaAgenda(string userDoc, TipoDocumento tipoDoc, string nomActividad, DateTime fechaAct) 
         {
+
             UsuarioHuesped userH = BuscarHuesped(userDoc, tipoDoc);
 
             Actividad act = BuscarActividad(nomActividad, fechaAct);
 
             if(userH.ObtenerEdad() > 18)
             {
-                act.AgregarAgenda(userH);
+               act.AgregarAgenda(userH);
 
             }
-
+            else {
+                throw  new Exception("El usuario es menor de edad");
+            }
         }
 
         public List<Actividad> ListarActividades()

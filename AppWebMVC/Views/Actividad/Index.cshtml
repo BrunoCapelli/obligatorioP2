@@ -14,14 +14,18 @@
 <body>
     <h1>Listado de Actividades</h1>
 
+    @if (ViewBag.mensaje != null) {
+        <p style="color:red">@ViewBag.mensaje</p>
+    }
+
     <form method="get">
         <label for="fecha"></label>
         <input name="fecha" type="date" value="@ViewBag.fecha.ToString("yyyy-MM-dd")" />
         <input value="Buscar" type="submit"  />
     </form>
-
+    
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-light">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
@@ -44,7 +48,9 @@
                         <td>@a.CantidadMaxPersonas</td>
                         <td>@a.EdadMinina años</td>
                         <td>$@a.Costo</td>
-                        <td><a href="">Agendarse</a></td>
+                        <td>
+                            <form action="~/Actividad/Agendar" method="post"><button type="submit" name="id" value="@a.Id">Agendar</button></form>
+                        </td>
                     </tr>
                 }
             }

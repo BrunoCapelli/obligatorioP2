@@ -36,8 +36,7 @@ namespace LogicaDeNegocio {
             base.Validate();
         }
 
-        public override string AgregarAgenda(UsuarioHuesped huesped) {
-            string resultado = "";
+        public override void AgregarAgenda(UsuarioHuesped huesped) {
             if (_isConfirmada == true) {
                 int descuentoFijo = this.Proveedor.DescuentoFijo;
                 decimal costoFinal = this.Costo;
@@ -52,24 +51,20 @@ namespace LogicaDeNegocio {
                     estadoAgenda = EstadoAgenda.PENDIENTE_PAGO;
 
                 }
-                if (hayCupos())
-                {
-                    Agenda agenda = new Agenda(huesped, estadoAgenda,costoFinal);
-                    this._agendas.Add(agenda);
-                    resultado = "Huesped: \n" + "Nombre: " + huesped.Nombre + "\nApellido: "
-                        + huesped.Apellido + "\nActividad: " + "\nNombre Actividad: " + this.Nombre + "\nFecha: "
-                        + this.Fecha.ToString();
-                    if (costoFinal == 0) {
-                        resultado += "\nCosto: Actividad gratuita";
-                    } else {
-                        resultado += "\nCosto: " + agenda.CostoFinal.ToString();
+
+
+                if (hayCupos()) {
+                    if (!HuespedEnAgenda(huesped)) {
+                        Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
+                        this._agendas.Add(agenda);
+
                     }
-                    resultado += "\nEstado agenda: " + agenda.EstadoAgenda.ToString();
-                    resultado += "\nProveedor: " + this.Proveedor.NombreProveedor;
+                    else {
+                        throw new Exception("El usuario ya posee una agenda para esta actividad");
+                    }
 
                 }
-                else
-                {
+                else {
                     throw new Exception("No hay cupos disponibles");
                 }
 
@@ -77,7 +72,6 @@ namespace LogicaDeNegocio {
             else {
                 throw new Exception("La actividad no esta confirmada");
             }
-            return resultado;
         }
 
         public override string GetProveedor()
