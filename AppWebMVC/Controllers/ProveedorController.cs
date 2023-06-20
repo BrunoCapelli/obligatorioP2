@@ -7,12 +7,23 @@ namespace AppWebMVC.Controllers
     {
         public IActionResult ListarProveedores()
         {
-            return View();
+            if(HttpContext.Session.GetString("rol") == "Operador") {
+                return View();
+            }
+            else {
+                return RedirectToAction("Index","Home");
+            }
         }
         public IActionResult EstablecerPromocion(string nombreProveedor)
         {
-            ViewBag.nombreProv= nombreProveedor;
-            return View();
+            if (HttpContext.Session.GetString("rol") == "Operador") {
+                ViewBag.nombreProv = nombreProveedor;
+                return View();
+            }
+            else {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
         [HttpPost]
         public IActionResult EstablecerPromocion(string nombreProveedor,int valorPromocion)

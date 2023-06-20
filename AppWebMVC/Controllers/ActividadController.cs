@@ -74,24 +74,39 @@ namespace AppWebMVC.Controllers
 
         public IActionResult ListarAgendas()
         {
-            if(HttpContext.Session.GetString("rol") == "Huesped")
-            {
-                ViewBag.Email = HttpContext.Session.GetString("email");
+            string email = HttpContext.Session.GetString("email");
+            if (email != null) {
 
+                if (HttpContext.Session.GetString("rol") == "Huesped")
+                {
+                    ViewBag.Email = email;
+
+                }
+                return View();
+            } else {
+                return RedirectToAction("Index", "Login");
             }
-            return View();
         }
         public IActionResult ListarAgendasPendientes()
         {
-            return View();
+           
+            if (HttpContext.Session.GetString("rol") == "Operador") {
+                return View();
+            }
+            else {
+                return RedirectToAction("Index", "Home");
+            }
         }
         public IActionResult ConfirmarAgenda(string nomAc, DateTime fecAc)
         {          
-            
+            if(nomAc!= null && fecAc > DateTime.MinValue) {
+
                Agenda ag = AdminHostel.GetInstancia.BuscarAgenda(nomAc, fecAc);
                ag.EstadoAgenda = EstadoAgenda.CONFIRMADA;
-            
-            return RedirectToAction("ListarAgendasPendientes");
+               return RedirectToAction("ListarAgendasPendientes");
+            } else {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
