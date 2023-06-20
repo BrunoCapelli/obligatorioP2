@@ -27,7 +27,8 @@ namespace AppWebMVC.Controllers
                     if (uh != null) {
                         try {
                             adm.AltaAgenda(uh.NroDocumento, uh.TipoDoc, act.Nombre, act.Fecha);
-                            return RedirectToAction("ListarAgendas", "Usuario");
+                            ViewBag.Email = uh.Email;
+                            return View("ListarAgendas");
                             //redirecciono a mostrar todas las agendas
                         } catch (Exception e) {
                             ViewBag.mensaje = e.Message;
@@ -66,6 +67,11 @@ namespace AppWebMVC.Controllers
 
         public IActionResult ListarAgendas()
         {
+            if(HttpContext.Session.GetString("rol") == "Huesped")
+            {
+                ViewBag.Email = HttpContext.Session.GetString("email");
+
+            }
             return View();
         }
         public IActionResult ListarAgendasPendientes()

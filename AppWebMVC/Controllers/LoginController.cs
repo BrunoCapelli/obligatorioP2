@@ -20,6 +20,7 @@ namespace AppWebMVC.Controllers
                 if(userEncontrado != null && userEncontrado.Email == user && userEncontrado.Password == password) 
                 {
                     HttpContext.Session.SetString("email", userEncontrado.Email);
+                    HttpContext.Session.SetString("rol", userEncontrado.VerificarRol());
                     return RedirectToAction("Index", "Home");
                 }
                 else
