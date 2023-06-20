@@ -15,7 +15,14 @@ namespace AppWebMVC.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("email") != null)
+            {
+
             return View();
+            } else
+            {
+                return RedirectToAction("Index","Login");
+            }
         }
 
         public IActionResult Privacy()

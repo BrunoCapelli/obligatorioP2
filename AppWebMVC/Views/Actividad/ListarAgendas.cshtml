@@ -23,14 +23,7 @@
                         <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
                         <td>@ac.Nombre</td>
                         <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
-
-                            if(ac.TipoActividad() == "Propia" )
-                            {
-                                <td>@ac.GetLugar()</td> 
-                            }else{
-                                    <td>Sin definir</td>
-                            }
-
+                        <td>@ac.GetLugar()</td> 
                             if (ag.CostoFinal > 0)
                             {
                                 <td>@ag.CostoFinal</td>

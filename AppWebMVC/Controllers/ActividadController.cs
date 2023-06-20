@@ -54,7 +54,14 @@ namespace AppWebMVC.Controllers
         [HttpGet]
         public IActionResult BuscarAgendaPorHuesped()
         {
-            return View();
+            if (HttpContext.Session.GetString("rol") == "Operador")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
