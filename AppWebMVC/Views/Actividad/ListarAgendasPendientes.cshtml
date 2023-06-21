@@ -1,10 +1,10 @@
 ﻿@using LogicaDeNegocio
 
 <div>
-    <h2>Lista de agendas</h2>
+    <h2 class="alignTextCenter">Lista de agendas</h2>
 
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark alignTextCenter">
             <tr>
                 <th scope="col">Nombre del Huesped</th>
                 <th scope="col">Actividad</th>
@@ -16,7 +16,7 @@
                 <th scope="col">Cambiar Estado</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="alignTextCenter">
             @foreach (Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
             {
                 <tr>
@@ -54,7 +54,7 @@
                             <td> <form method="post" action="ConfirmarAgenda"> 
                               <input name="nomAc" value="@ac.Nombre" hidden> 
                               <input name="fecAc" value="@ac.Fecha" hidden>
-                              <input type="submit" value="Confirmar">
+                                    <input type="submit" value="Confirmar" class="btn btn-success">
                               </form> </td>
                         }
                         

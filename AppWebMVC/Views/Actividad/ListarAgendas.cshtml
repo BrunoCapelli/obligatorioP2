@@ -1,9 +1,9 @@
 ﻿@using LogicaDeNegocio
 
-   <h2> Lista de agendas</h2>
+<h2 class="alignTextCenter"> Lista de agendas</h2>
 <p style="color:tomato">@ViewBag.Error</p>
     <table class="table">
-        <thead class="thead-dark">
+    <thead class="thead-dark alignTextCenter">
             <tr>
                 <th scope="col">Nombre del Huesped</th>
                 <th scope="col">Actividad</th>
@@ -14,7 +14,7 @@
                 <th scope="col">Estado</th>
             </tr>
         </thead>
-        <tbody>
+    <tbody class="alignTextCenter">
 
             @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
             {

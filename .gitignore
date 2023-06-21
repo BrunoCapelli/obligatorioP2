@@ -7,3 +7,6 @@
 /AppWebMVC/obj/Debug
 /AppWebMVC/bin/Debug
 /AppWebMVC/obj
+/AppWebMVC/Properties/PublishProfiles
+/AppWebMVC/bin/Release/net7.0
+/AppWebMVC/.config

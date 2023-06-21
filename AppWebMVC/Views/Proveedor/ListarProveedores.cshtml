@@ -12,16 +12,16 @@
     }
 
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark alignTextCenter">
             <tr>
                 <th scope="col">Nombre del Proveedor</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">Descuento</th>
-                <th scope="col">Mod. Descuento</th>
+                <th scope="col" style="text-align:left">Mod. Descuento</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="alignTextCenter">
             @foreach(Proveedor prov in AdminHostel.GetInstancia.ListarProveedores())
             {
                 <tr>
@@ -29,7 +29,12 @@
                     <td>@prov.DireccionProveedor</td>
                     <td>@prov.TelefonoProveedor</td>
                     <td>@prov.DescuentoFijo</td>
-                    <td> <a href="~/Proveedor/EstablecerPromocion?nombreProveedor=@prov.NombreProveedor"> Modificar </a> </td>
+                    <td>
+                        <div class="button-div">
+                            <a style="color:#ffffff; text-decoration: none;" href="~/Proveedor/EstablecerPromocion?nombreProveedor=@prov.NombreProveedor"> Modificar </a>
+
+                        </div>
+                    </td>
                 </tr>
                 
                                 

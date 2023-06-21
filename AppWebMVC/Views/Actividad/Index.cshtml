@@ -2,20 +2,22 @@
 
 
 <body>
-    <h1>Listado de Actividades</h1>
+    <h1 class="alignTextCenter">Listado de Actividades</h1>
 
     @if (ViewBag.mensaje != null) {
         <p style="color:red">@ViewBag.mensaje</p>
     }
+    <div class="displayFlex" style="padding: 2%;">
+        <form method="get">
+            <label for="fecha"></label>
+            <input name="fecha" type="date" value="@ViewBag.fecha.ToString("yyyy-MM-dd")" />
+            <input value="Buscar" type="submit" class="btn btn-primary" />
+        </form>
 
-    <form method="get">
-        <label for="fecha"></label>
-        <input name="fecha" type="date" value="@ViewBag.fecha.ToString("yyyy-MM-dd")" />
-        <input value="Buscar" type="submit" class="btn btn-primary" />
-    </form>
+    </div>
     
     <table class="table">
-        <thead class="thead-light">
+        <thead class="thead-light alignTextCenter">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
@@ -27,7 +29,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="alignTextCenter">
             @foreach (Actividad a in AdminHostel.GetInstancia.ListarActividades()) {
                 @if (ViewBag.fecha.ToString("d") == a.Fecha.ToString("d")) {
                     <tr>
@@ -39,7 +41,7 @@
                         <td>@a.EdadMinina años</td>
                         <td>$@a.Costo</td>
                         <td>
-                            <form action="~/Actividad/Agendar" method="post"><button type="submit" name="id" value="@a.Id">Agendar</button></form>
+                            <form action="~/Actividad/Agendar" method="post"><button type="submit" class="btn btn-success" name="id" value="@a.Id">Agendar</button></form>
                         </td>
                     </tr>
                 }

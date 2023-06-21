@@ -1,17 +1,21 @@
 ﻿
-<div>
-    <form method="post" >
-        <input type="hidden" value="@ViewBag.nombreProv" name="nombreProveedor" /> <br /> <br />
-        <label>Valor de promocion</label> <br />
-        <input name="valorPromocion" /><br /><br />
-        @if(ViewBag.nombreProv!= null)
-        {
-            <input type="submit" />
-        }
-        else
-        {
-            <input type="submit" disabled />
-        }
+<div class="alignTextCenter displayFlex">
+    <h5>Establecer valor de promocion al proveedor @ViewBag.nombreProv</h5>
+    <div class="grayBox">
+        <form method="post" style="margin-top: 15%;">
+            <input type="hidden" value="@ViewBag.nombreProv" name="nombreProveedor" /> <br /> <br />
+            <h6 style="color:white">Valor de promocion</h6> <br />
+            <input name="valorPromocion" class="form-control input-inside" /><br /><br />
+            @if(ViewBag.nombreProv!= null)
+            {
+                <input class="btn btn-success" type="submit" value="Guardar" />
+            }
+            else
+            {
+                <input class="btn btn-success" type="submit" disabled value="Guardar" />
+            }
 
-    </form>
+        </form>
+
+    </div>
 </div>
