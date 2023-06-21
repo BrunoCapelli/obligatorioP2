@@ -67,9 +67,18 @@ namespace AppWebMVC.Controllers
         [HttpPost]
         public IActionResult BuscarAgendaPorHuesped(string docHuesped, TipoDocumento tipoDocumento)
         {
-            UsuarioHuesped userH = AdminHostel.GetInstancia.BuscarHuesped(docHuesped, tipoDocumento);
-            @ViewBag.Email = userH.Email;
-            return View("ListarAgendas");
+            if(docHuesped != null)
+            {
+                UsuarioHuesped userH = AdminHostel.GetInstancia.BuscarHuesped(docHuesped, tipoDocumento);
+                ViewBag.Email = userH.Email;
+                return View("ListarAgendas");
+
+            }
+            else
+            {
+                ViewBag.Error = "Debe ingresar un nro de documento";
+                return View("ListarAgendas");
+            }
         }
 
         public IActionResult ListarAgendas()
