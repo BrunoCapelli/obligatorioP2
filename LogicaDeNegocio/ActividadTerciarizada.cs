@@ -56,6 +56,7 @@ namespace LogicaDeNegocio {
                 if (hayCupos()) {
                     if (!HuespedEnAgenda(huesped)) {
                         Agenda agenda = new Agenda(huesped, estadoAgenda, costoFinal);
+                        agenda.Validate();
                         this._agendas.Add(agenda);
 
                     }

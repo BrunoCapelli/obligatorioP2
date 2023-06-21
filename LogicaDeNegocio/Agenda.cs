@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaDeNegocio
 {
-    public class Agenda: IComparable<Agenda> //IValidate
+    public class Agenda: IComparable<Agenda>, IValidate
     {
         private UsuarioHuesped _huesped;
         private EstadoAgenda _estadoAgenda;
@@ -21,7 +21,7 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Constructor
-        public Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,decimal costoFinal) { //se puede hacer esto?
+        public Agenda(UsuarioHuesped huesped,EstadoAgenda estadoAgenda,decimal costoFinal) { 
             _huesped = huesped;
             _estadoAgenda= estadoAgenda;
             _fechaCreacionAgenda= DateTime.Now;
@@ -39,6 +39,18 @@ namespace LogicaDeNegocio
         #region Metodos
         public void Confirmar() {
             _estadoAgenda = EstadoAgenda.CONFIRMADA;
+        }
+
+        public void Validate()
+        {
+            if(_huesped == null)
+            {
+                throw new Exception("El usuario no es valido");
+            }
+            if(_costoFinal < 0)
+            {
+                throw new Exception("El costo no es valido");
+            }
         }
         #endregion
 
