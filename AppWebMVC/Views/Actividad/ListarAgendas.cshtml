@@ -14,35 +14,73 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha()){
-            <tr>
-                @foreach(Agenda ag in ac.Agendas){
-                    if (ag.Huesped.Email == @ViewBag.Email)
-                    {
 
-                        <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
-                        <td>@ac.Nombre</td>
-                        <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
-                        <td>@ac.GetLugar()</td> 
+            @foreach(Actividad ac in AdminHostel.GetInstancia.ListarActividadesPorFecha())
+            {
+                <tr>
+                @foreach(Agenda ag in ac.Agendas)
+                {
+                    @if(Context.Session.GetString("rol") == "Huesped")
+                    {
+                        if (ag.Huesped.Email == @ViewBag.Email && ac.Fecha >= DateTime.Now)
+                        {
+
+                            <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
+                            <td>@ac.Nombre</td>
+                            <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
+                            <td>@ac.GetLugar()</td> 
+                                if (ag.CostoFinal > 0)
+                                {
+                                    <td>@ag.CostoFinal</td>
+                                }else{
+                                    <td>Actividad gratuita</td>
+                                }
+
+                                if(ac.TipoActividad() == "Terciarizada"){<td>@ac.GetProveedor() </td>                          
+                                }
+                                else{<td> </td>  // Solo por motivo estetico =)
+                                    }
+                            <td>@ag.EstadoAgenda</td>
+
+                        }
+
+                    }
+                    else
+                    {
+                        if (ag.Huesped.Email == @ViewBag.Email)
+                        {
+
+                            <td>@ag.Huesped.Nombre @ag.Huesped.Apellido</td>
+                            <td>@ac.Nombre</td>
+                            <th>@ac.Fecha.ToString("dd/MM/yyyy")</th>
+                            <td>@ac.GetLugar()</td>
                             if (ag.CostoFinal > 0)
                             {
                                 <td>@ag.CostoFinal</td>
-                            }else{
+                            }
+                            else
+                            {
                                 <td>Actividad gratuita</td>
                             }
 
-                            if(ac.TipoActividad() == "Terciarizada"){<td>@ac.GetProveedor() </td>                          
+                            if (ac.TipoActividad() == "Terciarizada")
+                            {
+                                <td>@ac.GetProveedor() </td>
                             }
-                            else{<td> </td>  // Solo por motivo estetico =)
-                                }
-                                <td>@ag.EstadoAgenda</td>
-                            
-                            
+                            else
+                            {
+                                <td> </td>
+                                // Solo por motivo estetico =)
+                            }
+                            <td>@ag.EstadoAgenda</td>
+
+                        }
                     }
                 }
-            </tr>
-                
+                </tr>
             }
+                
+            
             <tr>
             
             </tr>

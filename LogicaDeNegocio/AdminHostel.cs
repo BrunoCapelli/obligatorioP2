@@ -271,16 +271,8 @@ namespace LogicaDeNegocio
 
         public List<Actividad> ListarActividadesPorFecha()
         {
-            List<Actividad> listAux = new List<Actividad>();
-            foreach (Actividad ac in _actividades)
-            {
-                if(ac.Fecha >= DateTime.Now)
-                {
-                    listAux.Add(ac);
-                }
-            }
-            listAux.Sort();
-            return listAux;
+           _actividades.Sort();
+            return _actividades;
         }
 
         public List<Proveedor> ListarProveedores()
@@ -429,7 +421,7 @@ namespace LogicaDeNegocio
             AltaActividadTerciarizada("Globo Aerostático", "Experiencia de vuelo en globo aerostático", "20/12/2023", 4, 21, 200, "Rekreation S.A.", false, "30/06/2023");
             AltaActividadTerciarizada("Taller de cocina", "Aprende a cocinar platos típicos de la región", "10/03/2023", 20, 18, 25, "Rekreation S.A.", true, "15/03/2023");
 
-            AltaActividadTerciarizada("Tour en bicicleta", "Recorre los mejores paisajes en bicicleta", "20/04/2023", 15, 14, 10, "Alonso & Umpierrez", true, "25/04/2023");
+            AltaActividadTerciarizada("Tour en bicicleta", "Recorre los mejores paisajes en bicicleta", "20/09/2023", 15, 14, 10, "Alonso & Umpierrez", true, "25/04/2023");
             AltaActividadTerciarizada("Clases de yoga", "Despierta tu cuerpo y mente con yoga", "05/05/2023", 30, 16, 8, "Alonso & Umpierrez", true, "10/05/2023");
             AltaActividadTerciarizada("Karaoke night", "Diviértete cantando tus canciones favoritas en el bar del hotel", "14/06/2023", 50, 18, 5, "Alonso & Umpierrez", false, "19/06/2023");
 
@@ -453,34 +445,27 @@ namespace LogicaDeNegocio
 
             // Precarga Agendas
 
-            DateTime fechaAge = new DateTime();
-            string fecha2 = "25/02/2023";
-            DateTime.TryParse(fecha2, out fechaAge);
+            
+            DateTime.TryParse("25/02/2023", out DateTime fechaAge);
             AltaAgenda("52722947", TipoDocumento.CI, "Fiesta de Disfraces", fechaAge);
-
-            DateTime fechaAge2 = new DateTime();
-            string fecha22 = "10/08/2023";
-            DateTime.TryParse(fecha22, out fechaAge2);
+                        
+            DateTime.TryParse("10/08/2023", out DateTime fechaAge2);
             AltaAgenda("52722947", TipoDocumento.CI, "Torneo de ping pong", fechaAge2);
-
-
-            string fechaAgenda = "01/11/2023";
-            DateTime.TryParse(fechaAgenda, out DateTime FechaAgendaP);
-            AltaAgenda("52722947", TipoDocumento.CI, "Yoga", FechaAgendaP);
-
-            string fechaAgenda2 = "25/02/2023";
-            DateTime.TryParse(fechaAgenda2, out DateTime fechaAgendaP2);
+                        
+            DateTime.TryParse("01/11/2023", out DateTime FechaAgeP);
+            AltaAgenda("52722947", TipoDocumento.CI, "Yoga", FechaAgeP);
+                        
+            DateTime.TryParse("25/02/2023", out DateTime fechaAgendaP2);
             AltaAgenda("19122605", TipoDocumento.CI, "Fiesta de Disfraces", fechaAgendaP2);
 
-
+            DateTime.TryParse("20/09/2023", out DateTime fechaX);
+            AltaAgenda("19122605", TipoDocumento.CI, "Tour en bicicleta", fechaX );
 
 
             // Precarga de Operador
 
 
-            DateTime fechaAlta = new DateTime();
-            string fechaAltaFinal = "17/05/2020";
-            DateTime.TryParse(fechaAltaFinal, out fechaAlta);
+            DateTime.TryParse("17/05/2020", out DateTime fechaAlta);
             UsuarioOperador userOperador1 = new UsuarioOperador("nicoherrera@hostel.com", "nicololo","Nico", "Herrera", fechaAlta);
             _usuarios.Add(userOperador1);
 
