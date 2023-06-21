@@ -1,32 +1,28 @@
 ﻿@using LogicaDeNegocio
 
-<div>
-    
-    @if (ViewBag.userRol == "Operador")
-    {
-        <h2>Datos personales</h2> <br /> <br />
+<div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    @if (ViewBag.userRol == "Operador") {
+        <h2 style="font-size: 18px; margin-bottom: 10px;">Datos personales</h2>
+        <br />
 
-        <p>Nombre: @ViewBag.Usuario.Nombre </p>
-        <p>Apellido: @ViewBag.Usuario.Apellido </p>
-        <p>Fecha: @ViewBag.Usuario.FechaAlta.ToString("dd/MM/yyyy")</p>
-        // esta roto esto
+        <br />
+
+        <p><strong>Nombre:</strong> @ViewBag.Usuario.Nombre</p>
+        <p><strong>Apellido:</strong> @ViewBag.Usuario.Apellido</p>
+        <p><strong>Fecha:</strong> @ViewBag.Usuario.FechaAlta.ToString("dd/MM/yyyy")</p>
     }
-    @if (ViewBag.userRol == "Huesped")
-    {
-        <h2>Datos personales</h2> <br /> <br />
-    
-        <p>Nombre: @ViewBag.Usuario.Nombre </p>
-        <p>Apellido: @ViewBag.Usuario.Apellido </p>
-        <p>Nro de documento: @ViewBag.Usuario.NroDocumento </p>
-        <p>Tipo de documento: @ViewBag.Usuario.TipoDoc</p>
-        <p>Fecha de nacimiento: @ViewBag.Usuario.FechaNacimiento.ToString("dd/MM/yyyy")</p>
-        <p>Habitacion: @ViewBag.Usuario.Habitacion</p>
-        <p>Nivel de fidelizacion: @ViewBag.Usuario.NivelFidelizacion</p>
-        
+    @if (ViewBag.userRol == "Huesped") {
+        <h2 style="font-size: 18px; margin-bottom: 10px;">Datos personales</h2>
+        <br />
+
+        <br />
+
+        <p><strong>Nombre:</strong> @ViewBag.Usuario.Nombre</p>
+        <p><strong>Apellido:</strong> @ViewBag.Usuario.Apellido</p>
+        <p><strong>Nro de documento:</strong> @ViewBag.Usuario.NroDocumento</p>
+        <p><strong>Tipo de documento:</strong> @ViewBag.Usuario.TipoDoc</p>
+        <p><strong>Fecha de nacimiento:</strong> @ViewBag.Usuario.FechaNacimiento.ToString("dd/MM/yyyy")</p>
+        <p><strong>Habitación:</strong> @ViewBag.Usuario.Habitacion</p>
+        <p><strong>Nivel de fidelización:</strong> @ViewBag.Usuario.NivelFidelizacion</p>
     }
-
-
-
-
-
 </div>

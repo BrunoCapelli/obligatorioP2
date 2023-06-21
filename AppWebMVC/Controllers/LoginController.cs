@@ -47,7 +47,13 @@ namespace AppWebMVC.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-            return View();
+            if(HttpContext.Session.GetString("email")== null) {
+                return View();
+
+            }else {
+                return RedirectToAction("Index", "Home");
+                //esto es para que cuando esten logueados si quieren entrar a la pantalla de registrarse no los deje
+            }
         }
 
         [HttpPost]

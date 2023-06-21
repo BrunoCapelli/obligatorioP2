@@ -6,7 +6,7 @@
 <div class="text-center">
     @if (@AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")) != null){
 
-        <h1 class="display-4">Welcome @AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).Email </h1>
+        <h1 class="display-4">Bienvenido/a @AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")).Nombre a nuestro hotel! </h1>
     } else
     {
         <h1 class="display-4"> ¡Bienvenido a nuestro Hostel! </h1>

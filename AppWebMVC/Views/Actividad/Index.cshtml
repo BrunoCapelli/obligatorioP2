@@ -51,3 +51,11 @@
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --> 
 </body>
 </html>
+
+@if (AdminHostel.GetInstancia.BuscarPorEmail(Context.Session.GetString("email")) == null) {
+    <script>
+
+        document.querySelector("#navbar").insertAdjacentHTML('beforeend', ` <li class="nav-item"> <a class="nav-link text-dark" href="Login/SignUp">Registrarse</a> </li>`);
+
+    </script>
+}
