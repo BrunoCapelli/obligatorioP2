@@ -38,11 +38,11 @@ namespace LogicaDeNegocio
 
         public decimal Costo { get { return _costoFinal; } set { _costoFinal = value; } }
 
-        public List<Agenda> Agendas { get { return this._agendas; } } //aca solo puse el get porque el set es agregar un elemento a la lista, esta implementado mas abajo
+        public List<Agenda> Agendas { get { return this._agendas; } } 
         #endregion
 
         #region Constructor
-        public Actividad(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo) { //no intentar llamar a este metodo para un objeto Actividad, dara error por ser abstracto
+        public Actividad(string nombre, string descripcion, DateTime fecha, int cantMaxPer, int edadMinima, decimal costo) { 
             s_ultimoId += 1;
             _id = s_ultimoId;
             _nombre = nombre;
@@ -97,17 +97,7 @@ namespace LogicaDeNegocio
             return esta;
         }
 
-        public override string ToString() {
-            string resultado = "";
-            resultado += $" ID: {Id}" +
-                    $"Nombre: {Nombre}" +
-                    $" Descripcion: {Descripcion} " +
-                    $" Fecha: {Fecha} " +
-                    $" Cant. max. personas: {CantidadMaxPersonas} " +
-                    $" Edad min para realizarla: {EdadMinina} ";
-            return resultado;
-        }
-
+        
         public virtual string GetProveedor() {
             string proveedor = null;
             return proveedor;
@@ -123,18 +113,7 @@ namespace LogicaDeNegocio
 
         
         #endregion
-
-        public bool tieneAgendasSinConfirmar() {
-            bool res = false;
-            int i = 0;
-            while (i < _agendas.Count && res == false) {
-                if (_agendas[i].EstadoAgenda == EstadoAgenda.PENDIENTE_PAGO) {
-                    res = true;
-                }
-                i++;
-            }
-            return res;
-        }
+       
     }
 
 

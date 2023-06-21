@@ -62,13 +62,13 @@ namespace LogicaDeNegocio
         #region Metodos
 
         public void Validate()
-            //poner validacion tipo de DOC
+            
         {
             try
             {
-                base.Validate(); // llamo al validar de la clase padre primero
+                base.Validate(); 
 
-                // Valdiar tipo de documento
+                // Validar tipo de documento
                 if(_tipoDoc != TipoDocumento.CI && _tipoDoc != TipoDocumento.PASAPORTE && _tipoDoc != TipoDocumento.OTROS)
                 {
                     throw new Exception("Tipo de documento no valido.");
@@ -125,7 +125,7 @@ namespace LogicaDeNegocio
 
         public int ObtenerEdad()
         {
-            // Nico ponelo bonito
+            
             int edad = DateTime.Now.Year - FechaNacimiento.Year;
 
             return edad;

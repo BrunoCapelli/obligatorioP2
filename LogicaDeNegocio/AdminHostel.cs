@@ -29,9 +29,9 @@ namespace LogicaDeNegocio
         #endregion
 
         #region Metodos
-        // Validar que no exista un usuario con los datos ingresados
+        
 
-        public UsuarioHuesped BuscarHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) //mejor que un existe es usar un Buscar
+        public UsuarioHuesped BuscarHuesped(string nroDocumentoHuesped, TipoDocumento tipoDocumentoHuesped) 
         {
             UsuarioHuesped huesped = null;
             UsuarioHuesped huespedAux = null;
@@ -104,7 +104,7 @@ namespace LogicaDeNegocio
             bool existe = false;
             int i = 0;
 
-            while (i < _proveedores.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+            while (i < _proveedores.Count && existe == false) { 
                 if (_proveedores[i].NombreProveedor.ToUpper() == nombre.ToUpper()) {
                     existe = true;
                     prov = _proveedores[i];
@@ -154,12 +154,12 @@ namespace LogicaDeNegocio
         }
 
         public Actividad BuscarActividad(string nombre, DateTime fecha)
-        { //busco la actividad para validar cuando hago el alta
+        { 
             Actividad act = null;
             bool existe = false;
             int i = 0;
 
-            while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+            while (i < _actividades.Count && existe == false) {
                 if (_actividades[i].Nombre == nombre && _actividades[i].Fecha == fecha) {
                     existe = true;
                     act = _actividades[i];
@@ -171,12 +171,13 @@ namespace LogicaDeNegocio
 
         }
 
-        public Actividad BuscarActividad(int id) { //busco la actividad para validar cuando hago el alta
+        public Actividad BuscarActividad(int id) 
+        { 
             Actividad act = null;
             bool existe = false;
             int i = 0;
 
-            while (i < _actividades.Count && existe == false) { //lo hago con un while para que no recorra innecesariamente
+            while (i < _actividades.Count && existe == false) { 
                 if (_actividades[i].Id == id) {
                     existe = true;
                     act = _actividades[i];
@@ -188,34 +189,31 @@ namespace LogicaDeNegocio
 
         }
 
-        //revisar si la validacion de existencia es correcta
+       
 
         public void AltaActividadPropia(string nombre, string descripcion, string fechaIn, int cantMaxPer, int edadMinima, decimal costo, string responsable, string lugar, bool exterior)
-        { //aca se va a llamar a los metodos correspondientes para la subclase ActividadPropia
+        { 
             DateTime fecha = new DateTime();
             DateTime.TryParse(fechaIn, out fecha);
 
             ActividadPropia actividadPropia = new ActividadPropia(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, responsable, lugar, exterior);
             try {
                 actividadPropia.Validate();
-                Actividad act = BuscarActividad(nombre, fecha); //lo hago con actvidad porque reviso si existe una actividad (no importa el tipo) con los mismos datos "clave"
+                Actividad act = BuscarActividad(nombre, fecha); 
                 if (act == null) {
                     _actividades.Add(actividadPropia);
                 } else {
-                    throw new Exception("Ya existe una Actividad con este nombre"); //puedo hacer el add porque es clase hija
+                    throw new Exception("Ya existe una Actividad con este nombre"); 
                 }
             } catch {
                 throw; //aca paso a Program la excepcion que dio validate de actividadPropia
             }
         }
 
-        //revisar si la validacion de existencia es correcta
-
-        //
+        
 
         public void AltaActividadTerciarizada(string nombre, string descripcion, string fechaIn, int cantMaxPer, int edadMinima, decimal costo, string nombreProveedor, bool confirmada, string fechaConfirmacionIn)
-        {//aca se va a llamar a los metodos correspondientes para la subclase ActividadTerciarizada
-         //antes de todo buscamos al proveedor
+        {
 
             DateTime fecha = new DateTime();
             DateTime.TryParse(fechaIn, out fecha);
@@ -230,17 +228,17 @@ namespace LogicaDeNegocio
                 ActividadTerciarizada actividadTerciarizada = new ActividadTerciarizada(nombre, descripcion, fecha, cantMaxPer, edadMinima, costo, prov, confirmada, fechaConfirmacion);
                 try {
                     actividadTerciarizada.Validate();
-                    Actividad act = BuscarActividad(nombre, fecha); //lo hago con actvidad porque reviso si existe una actividad (no importa el tipo) con los mismos datos "clave"
+                    Actividad act = BuscarActividad(nombre, fecha); 
                     if (act == null) {
 
-                        _actividades.Add(actividadTerciarizada); //puedo hacer el add porque es clase hija
+                        _actividades.Add(actividadTerciarizada); 
                     }
                     else {
                         throw new Exception("Ya existe una Actividad con este nombre");
                     }
                 }
                 catch {
-                    throw; //aca paso a Program la excepcion que dio validate de actividadPropia
+                    throw; 
                 }
             } else {
                 throw new Exception("No existe un proveedor con ese nombre");

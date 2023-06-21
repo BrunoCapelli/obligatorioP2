@@ -32,7 +32,7 @@ namespace LogicaDeNegocio {
 
         #region Metodos
 
-        public void Validate() { //como no tengo cosas para validar aca solo llamo en base al validate de la clase padre
+        public void Validate() { 
             base.Validate();
         }
 

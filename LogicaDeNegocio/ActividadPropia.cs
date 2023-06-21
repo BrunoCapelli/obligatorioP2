@@ -33,7 +33,7 @@ namespace LogicaDeNegocio {
 
         #region Metodos
             
-        public void Validate() { //el base() aca es para que se llame al Validate de la clase padre primero
+        public void Validate() { 
             base.Validate();
             if (_responsable == "") {
                 throw new Exception("El nobre del responsable no puede ser vacio");
@@ -42,7 +42,7 @@ namespace LogicaDeNegocio {
 
         public override void AgregarAgenda(UsuarioHuesped huesped) 
         {
-            //base.AgregarAgenda(huesped, estadoAgenda);
+            
             int nivel = huesped.NivelFidelizacion;
             decimal costoFinal = obtenerCostoFinal(nivel);
             EstadoAgenda estadoAgenda = new EstadoAgenda();
