@@ -14,6 +14,7 @@ namespace AppWebMVC.Controllers
                 return RedirectToAction("Index","Home");
             }
         }
+        
         public IActionResult EstablecerPromocion(string nombreProveedor)
         {
             if (HttpContext.Session.GetString("rol") == "Operador") {
@@ -28,7 +29,7 @@ namespace AppWebMVC.Controllers
         [HttpPost]
         public IActionResult EstablecerPromocion(string nombreProveedor,int valorPromocion)
         {
-            if(nombreProveedor == null)
+            if(nombreProveedor != null)
             {
                 AdminHostel.GetInstancia.BuscarProveedor(nombreProveedor).DescuentoFijo = valorPromocion;
 

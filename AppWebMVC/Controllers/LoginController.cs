@@ -59,16 +59,32 @@ namespace AppWebMVC.Controllers
         [HttpPost]
         public IActionResult SignUp(string email, string password, string nombre, string apellido, DateTime fechaNac, string documento, TipoDocumento tipoDoc)
         {
-            if(!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(documento))
+            try
             {
-                AdminHostel.GetInstancia.AltaHuesped(email, password, nombre, apellido, tipoDoc, documento, fechaNac, "NULL", 1);
-                ViewBag.msgExito = "Se registró correctamente";
-                return View();
+                if(!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(documento))
+                {
+                    if(AdminHostel.GetInstancia.BuscarHuesped(documento, tipoDoc) == null)
+                    {
+                        AdminHostel.GetInstancia.AltaHuesped(email, password, nombre, apellido, tipoDoc, documento, fechaNac, "NULL", 1);
+                        ViewBag.msgExito = "Se registró correctamente";
 
-            }else 
+                    }
+                    else
+                    {
+                        ViewBag.msgError = "El documento ingresado ya existe";
+                    }
+                    return View();
+
+                }else 
+                {
+                    ViewBag.msgError = "Los campos no pueden estas vacios";
+                    return View(); 
+                }
+
+            }catch(Exception ex)
             {
-                ViewBag.msgError = "Los campos no pueden estas vacios";
-                return View(); 
+                ViewBag.MsgError = ex.Message;
+                return View();
             }
         }
     }
