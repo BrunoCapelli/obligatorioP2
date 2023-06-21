@@ -1,16 +1,6 @@
 ﻿@using LogicaDeNegocio
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Listado de Actividades</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            padding: 20px;
-        }
-    </style>
-</head>
+
 <body>
     <h1>Listado de Actividades</h1>
 
@@ -21,7 +11,7 @@
     <form method="get">
         <label for="fecha"></label>
         <input name="fecha" type="date" value="@ViewBag.fecha.ToString("yyyy-MM-dd")" />
-        <input value="Buscar" type="submit"  />
+        <input value="Buscar" type="submit" class="btn btn-primary" />
     </form>
     
     <table class="table">
@@ -58,6 +48,6 @@
         </tbody>
     </table>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --> 
 </body>
 </html>

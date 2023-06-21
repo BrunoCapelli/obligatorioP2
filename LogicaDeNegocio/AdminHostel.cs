@@ -271,8 +271,16 @@ namespace LogicaDeNegocio
 
         public List<Actividad> ListarActividadesPorFecha()
         {
-            _actividades.Sort();
-            return _actividades;
+            List<Actividad> listAux = new List<Actividad>();
+            foreach (Actividad ac in _actividades)
+            {
+                if(ac.Fecha >= DateTime.Now)
+                {
+                    listAux.Add(ac);
+                }
+            }
+            listAux.Sort();
+            return listAux;
         }
 
         public List<Proveedor> ListarProveedores()
