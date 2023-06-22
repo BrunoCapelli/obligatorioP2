@@ -467,6 +467,8 @@ namespace LogicaDeNegocio
             UsuarioOperador userOperador1 = new UsuarioOperador("nicoherrera@hostel.com", "nicololo","Nico", "Herrera", fechaAlta);
             _usuarios.Add(userOperador1);
 
+            UsuarioOperador userOperador2 = new UsuarioOperador("lilianapino@hostel.com", "lilianaP2", "Liliana", "Pino", fechaAlta);
+            _usuarios.Add(userOperador2);
 
         }
 
