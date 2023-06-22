@@ -3,15 +3,15 @@
 <div>
     <h2 class="alignTextCenter">Lista de agendas</h2>
 
-    <div class="displayFlex">
+    <div class="displayFlex alignTextCenter">
         <form method="post" >
-            <label for="docHuesped">Seleccione un huesped</label> <br />
-            <input class="form-control" class="alignAgendas" type="text" name="docHuesped" />
-            <select class="form-select" class="alignAgendas" name="tipoDocumento">
+            <label for="docHuesped" style="margin-bottom:2%">Seleccione un huesped</label> <br />
+            <input class="form-control" class="alignAgendas" type="text" name="docHuesped" /> <br />
+            <select class="form-select" class="alignAgendas" name="tipoDocumento"> 
                 <option value="@TipoDocumento.CI" selected>CI</option>
                 <option value="@TipoDocumento.PASAPORTE">Pasaporte</option>
                 <option value="@TipoDocumento.OTROS">Otro</option>
-            </select>
+            </select> <br />
             <input type="submit" class="btn btn-primary" value="Buscar" />
 
         </form>
